@@ -16,7 +16,7 @@ The other 2 files are `treaty.h` & `babel.h`, only updated the version info
 
 ------
 
-The commands will download the source files, install needed compilers, compile the perl files to exe and compile C files to EXE, place a zip file called babel_suite_win32.zip with all the EXE files on the Desktop
+These commands will download the source files, install needed compilers, compile the perl files to exe and compile C files to EXE, place a zip file called babel_suite_win32.zip with all the EXE files on the Desktop
 
 ------
 
