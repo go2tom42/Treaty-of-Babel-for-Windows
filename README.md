@@ -41,6 +41,7 @@ If you use a normal ISO and install Windows that way you will also need to insta
 `Set-MpPreference -DisableRealtimeMonitoring $true # Makes it go faster`  
 `choco feature enable -n allowGlobalConfirmation`  
 `choco install strawberryperl`  
+`exit`  
 
 **RESTART POWERSHELL TERMINAL as admin**  
 
@@ -186,3 +187,7 @@ If you use a normal ISO and install Windows that way you will also need to insta
 `cd ..`  
 `upx -9 *.exe`  
 `Compress-Archive -Path *.exe -DestinationPath C:\Users\IEUser\Desktop\babel_suite_win32.zip #Change if not using EVAL version`  
+`exit`  
+
+  
+  
