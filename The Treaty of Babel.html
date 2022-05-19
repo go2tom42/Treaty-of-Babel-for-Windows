@@ -1,0 +1,2788 @@
+<!DOCTYPE html>
+<html><head>
+<title>The Treaty of Babel</title>
+
+<style type="text/css">
+body {
+  font-family: 'Source Serif Pro', Georgia, serif;
+  margin-left: 2em;
+  margin-right: 2em;
+}
+h1, h2, h3, h4, h5 {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', sans-serif;
+}
+h4, h5 {
+  font-size: 1.0em;
+  margin-bottom: 1.0em;
+}
+.VersionHeader, .AuthorHeader, .DateHeader {
+  font-style: italic;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 2em;
+}
+code {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.9em;
+}
+pre {
+  padding-left: 2em;
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  white-space: pre-wrap;
+}
+.DefFun {
+  background: #FEB;
+}
+.CommentPara {
+  margin-left: 2em;
+}
+.Comment {
+  color: #0A0;
+  font-style: italic;
+}
+.Comment em {
+  font-style: normal;
+}
+.CommentCode {
+  white-space: pre-wrap;
+}
+a {
+  color: #00C;
+}
+.Comment a {
+  color: #08B;
+}
+ul {
+  list-style: none;
+  padding-left: 1.8em;
+  text-indent: -0.8em;
+}
+ul li:before {
+  content: "\00B7\00A0\00A0";
+}
+.toc {
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", serif;
+  margin-left: 1em;
+}
+.toc ul {
+  padding-left: 1em;
+  text-indent: 0px;
+}
+.toc li:before {
+  content: none;
+}
+
+@font-face {
+  font-family: "Source Serif Pro";
+  font-weight: normal;
+  font-style: normal;
+  src: url("font/SourceSerifPro-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Source Serif Pro";
+  font-weight: bold;
+  font-style: normal;
+  src: url("font/SourceSerifPro-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-weight: normal;
+  font-style: normal;
+  src: url("font/SourceSansPro-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Source Sans Pro";
+  font-weight: bold;
+  font-style: normal;
+  src: url("font/SourceSansPro-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Source Code Pro";
+  font-weight: normal;
+  font-style: normal;
+  src: url("font/SourceCodePro-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Source Code Pro";
+  font-weight: bold;
+  font-style: normal;
+  src: url("font/SourceCodePro-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Source Code Pro";
+  font-weight: normal;
+  font-style: italic;
+  src: url("font/SourceCodePro-Italic.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Source Code Pro";
+  font-weight: bold;
+  font-style: italic;
+  src: url("font/SourceCodePro-BoldItalic.ttf") format("truetype");
+}
+
+</style>
+
+</head>
+<body>
+<h1 class="Title">The Treaty of Babel</h1>
+<p class="VersionHeader">A community standard for IF bibliography</p>
+<p class="VersionHeader">Revision 11</p>
+<p class="VersionHeader">18 January 2022</p>
+<p>Copyright 2006-2021 by the Interactive Fiction Technology Foundation.
+This document is licenced under a
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+You are free to share and adapt this material for noncommercial purposes,
+as long as you provide attribution, indicate if changes were made, and
+make the result available under the same license.</p>
+<p>This document and further Babel information can be found at: <a href="https://babel.ifarchive.org/">babel.ifarchive.org</a></p>
+<hr />
+<div class="toc">
+<ul>
+<li><a href="#preamble">1. Preamble</a><ul>
+<li><a href="#background">1.1. Background</a></li>
+<li><a href="#aims">1.2. Aims</a></li>
+<li><a href="#signatories">1.3. Signatories</a></li>
+</ul>
+</li>
+<li><a href="#requirements-on-design-systems">2. Requirements on design systems</a><ul>
+<li><a href="#provision-of-metadata-and-cover-art">2.1. Provision of metadata and cover art</a><ul>
+<li><a href="#requirements-and-guidelines-for-metadata">2.1.1. Requirements and guidelines for metadata</a></li>
+<li><a href="#requirements-and-guidelines-for-cover-art">2.1.2. Requirements and guidelines for cover art</a></li>
+</ul>
+</li>
+<li><a href="#the-ifid-unique-identifier">2.2. The IFID unique identifier</a><ul>
+<li><a href="#ifids-for-new-projects">2.2.1. IFIDs for new projects</a></li>
+<li><a href="#the-ifid-for-an-html-story-file">2.2.2. The IFID for an HTML story file</a></li>
+<li><a href="#ifids-for-legacy-projects">2.2.3. IFIDs for legacy projects</a><ul>
+<li><a href="#the-ifid-for-a-legacy-z-code-story-file">2.2.3.1. The IFID for a legacy Z-code story file</a></li>
+<li><a href="#the-ifid-for-a-legacy-glulx-story-file">2.2.3.2. The IFID for a legacy Glulx story file</a></li>
+<li><a href="#the-ifid-for-a-legacy-tads2-or-tads3-story-file">2.2.3.3. The IFID for a legacy TADS2 or TADS3 story file</a></li>
+<li><a href="#the-ifid-for-a-legacy-hugo-story-file">2.2.3.4. The IFID for a legacy Hugo story file</a></li>
+<li><a href="#the-ifid-for-a-legacy-magnetic-scrolls-story-file">2.2.3.5. The IFID for a legacy Magnetic Scrolls story file</a></li>
+<li><a href="#the-ifid-for-a-legacy-agt-story-file">2.2.3.6. The IFID for a legacy AGT story file</a></li>
+<li><a href="#the-ifid-for-a-legacy-level-9-story-file">2.2.3.7. The IFID for a legacy Level 9 story file</a></li>
+<li><a href="#the-ifid-for-a-legacy-advsys-story-file">2.2.3.8. The IFID for a legacy AdvSys story file</a></li>
+<li><a href="#the-ifid-for-a-legacy-alan-story-file">2.2.3.9. The IFID for a legacy Alan story file</a></li>
+<li><a href="#the-ifid-for-a-legacy-html-story-file">2.2.3.10. The IFID for a legacy HTML story file</a></li>
+<li><a href="#the-ifid-for-an-executable-file">2.2.3.11. The IFID for an executable file</a></li>
+</ul>
+</li>
+<li><a href="#ifids-for-projects-falling-outside-this-agreement">2.2.4. IFIDs for projects falling outside this agreement</a></li>
+<li><a href="#the-ifid-for-a-blorbed-story-file">2.2.5. The IFID for a blorbed story file</a></li>
+</ul>
+</li>
+<li><a href="#the-babel-tool">2.3. The "babel" tool</a><ul>
+<li><a href="#wrappers-and-formats">2.3.1. Wrappers and formats</a></li>
+<li><a href="#contributing-to-babel">2.3.2. Contributing to "babel"</a></li>
+<li><a href="#algorithm-for-determining-the-format-of-a-story-file">2.3.3. Algorithm for determining the format of a story file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#guidelines-for-interpreters-and-browsers">3. Guidelines for interpreters and browsers</a></li>
+<li><a href="#requirements-on-the-if-archive">4. Requirements on the IF-archive</a><ul>
+<li><a href="#uploading">4.1. Uploading</a></li>
+<li><a href="#accessioning">4.2. Accessioning</a></li>
+<li><a href="#serving">4.3. Serving</a></li>
+<li><a href="#contributing">4.4. Contributing</a></li>
+</ul>
+</li>
+<li><a href="#the-ifiction-format">5. The iFiction format</a><ul>
+<li><a href="#purpose-and-scope">5.1. Purpose and scope</a></li>
+<li><a href="#encoding">5.2. Encoding</a></li>
+<li><a href="#storage-in-files">5.3. Storage in files</a></li>
+<li><a href="#story-file-records">5.4. Story file records</a></li>
+<li><a href="#identification">5.5. Identification</a><ul>
+<li><a href="#ifid">5.5.1. &lt;ifid&gt;</a></li>
+<li><a href="#format">5.5.2. &lt;format&gt;</a></li>
+<li><a href="#tuid">5.5.3. &lt;tuid&gt;</a></li>
+<li><a href="#bafn">5.5.4. &lt;bafn&gt;</a></li>
+</ul>
+</li>
+<li><a href="#bibliographic">5.6. Bibliographic</a><ul>
+<li><a href="#title">5.6.1. &lt;title&gt;</a></li>
+<li><a href="#author">5.6.2. &lt;author&gt;</a></li>
+<li><a href="#language">5.6.3. &lt;language&gt;</a></li>
+<li><a href="#headline">5.6.4. &lt;headline&gt;</a></li>
+<li><a href="#firstpublished">5.6.5. &lt;firstpublished&gt;</a></li>
+<li><a href="#genre">5.6.6. &lt;genre&gt;</a></li>
+<li><a href="#group">5.6.7. &lt;group&gt;</a></li>
+<li><a href="#description">5.6.8. &lt;description&gt;</a></li>
+<li><a href="#series-and-seriesnumber">5.6.9. &lt;series&gt; and &lt;seriesnumber&gt;</a></li>
+<li><a href="#forgiveness">5.6.10. &lt;forgiveness&gt;</a></li>
+</ul>
+</li>
+<li><a href="#resources">5.7. Resources</a><ul>
+<li><a href="#auxiliary">5.7.1. &lt;auxiliary&gt;</a></li>
+</ul>
+</li>
+<li><a href="#contacts">5.8. Contacts</a><ul>
+<li><a href="#url">5.8.1. &lt;url&gt;</a></li>
+<li><a href="#authoremail">5.8.2. &lt;authoremail&gt;</a></li>
+</ul>
+</li>
+<li><a href="#cover-art">5.9. Cover art</a><ul>
+<li><a href="#format_1">5.9.1. &lt;format&gt;</a></li>
+<li><a href="#height-and-width">5.9.2. &lt;height&gt; and &lt;width&gt;</a></li>
+<li><a href="#description_1">5.9.3. &lt;description&gt;</a></li>
+</ul>
+</li>
+<li><a href="#the-format-specific-tags">5.10. The format-specific tags</a><ul>
+<li><a href="#zcode">5.10.1. &lt;zcode&gt;</a><ul>
+<li><a href="#coverpicture">5.10.1.1. &lt;coverpicture&gt;</a></li>
+</ul>
+</li>
+<li><a href="#tads2-and-tads3">5.10.2. &lt;tads2&gt; and &lt;tads3&gt;</a><ul>
+<li><a href="#presentationprofile">5.10.2.1. &lt;presentationprofile&gt;</a></li>
+</ul>
+</li>
+<li><a href="#glulx">5.10.3. &lt;glulx&gt;</a><ul>
+<li><a href="#coverpicture_1">5.10.3.1. &lt;coverpicture&gt;</a></li>
+<li><a href="#presentationprofile_1">5.10.3.2. &lt;presentationprofile&gt;</a></li>
+<li><a href="#width-height">5.10.3.3. &lt;width&gt;, &lt;height&gt;</a></li>
+</ul>
+</li>
+<li><a href="#hugo">5.10.4. &lt;hugo&gt;</a></li>
+<li><a href="#adrift">5.10.5. &lt;adrift&gt;</a></li>
+</ul>
+</li>
+<li><a href="#releases">5.11. Releases</a><ul>
+<li><a href="#attached-and-history">5.11.1. &lt;attached&gt; and &lt;history&gt;</a></li>
+<li><a href="#release">5.11.2. &lt;release&gt;</a></li>
+</ul>
+</li>
+<li><a href="#colophon">5.12. Colophon</a><ul>
+<li><a href="#generator">5.12.1. &lt;generator&gt;</a></li>
+<li><a href="#generatorversion">5.12.2. &lt;generatorversion&gt;</a></li>
+<li><a href="#originated">5.12.3. &lt;originated&gt;</a></li>
+</ul>
+</li>
+<li><a href="#annotation">5.13. Annotation</a><ul>
+<li><a href="#zoom">5.13.1. &lt;zoom&gt;</a></li>
+</ul>
+</li>
+<li><a href="#examples">5.14. Examples</a><ul>
+<li><a href="#trinity">5.14.1. "Trinity"</a></li>
+<li><a href="#bronze">5.14.2. "Bronze"</a></li>
+<li><a href="#ditch-day-drifter">5.14.3. "Ditch Day Drifter"</a></li>
+<li><a href="#dungeon-adventure">5.14.4. "Dungeon Adventure"</a></li>
+</ul>
+</li>
+<li><a href="#the-sparse-ifiction-format">5.15. The sparse iFiction format</a></li>
+</ul>
+</li>
+<li><a href="#appendix-babel-a-users-guide">A. Appendix: Babel: a user's guide</a><ul>
+<li><a href="#using-babel-on-the-command-line">A.1. Using babel on the command line</a><ul>
+<li><a href="#using-babel-in-a-pipe">A.1.1. Using babel in a pipe</a><ul>
+<li><a href="#piping-data-into-babel">A.1.1.1. Piping data into babel</a></li>
+<li><a href="#piping-data-out-of-babel">A.1.1.2. Piping data out of babel</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#the-babel-handler-api">A.2. The Babel handler API</a></li>
+<li><a href="#support-for-general-containers">A.3. Support for general containers</a></li>
+<li><a href="#definitions-made-in-treatyh">A.4. Definitions made in treaty.h</a></li>
+<li><a href="#the-babel-ifiction-api">A.5. The Babel iFiction API</a></li>
+<li><a href="#the-babel-get-program">A.6. The babel-get program</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="preamble">1. Preamble</h2>
+<h3 id="background">1.1. Background</h3>
+<p>Since the 1980s, writers of interactive fiction ("IF") have used a
+variety of programs ("design systems") to create new works. Some were
+in-house tools used by commercial IF production houses, but from around
+1990 IF has been written by a diverse Internet community, using tools
+written, tested and evolved within the community. The playable works of
+IF produced by design systems ("story files") have in almost all cases
+been programs for virtual machines, requiring the use of an emulator
+in order to play them (an "interpreter"). With few exceptions, the
+virtual machines used by different design systems have been mutually
+incompatible. Although a number of multi-format interpreters have been
+written, and the IF community prefers a format-independent approach to
+reviewing and discussing works of IF, few tools exist (as of the start
+of 2006) which treat all formats equally.</p>
+<p>One obstacle to the creation of software for playing and archiving IF
+in a format-independent way is that few design systems, up to 2006,
+have compiled even basic bibliographic data into their story files -
+the author and title, for instance. Only one major design system has
+approached this problem systematically (TADS 3), though others have
+implemented partial solutions, or incorporate data into story files
+which - though not intended to be read externally - can allow the
+title or author's name to be found.</p>
+<p>Most serious works of IF written since 1990 have been placed at the
+IF-archive, a community project which - subject to copyright issues -
+aims to preserve the whole corpus of IF, making it available to
+players of the present and future. Other web-based databases of IF
+exist, such as IFDB, which catalogue reviews and bibliographic
+data about works of IF but do not actually archive the story files:
+here copyright is not an issue. As a result, the IF-archive is the
+most complete collection of actual IF known to exist, but omits some
+of the most important early story files (notably Infocom's) for
+copyright reasons, and is not currently a useful source of
+bibliographic data. This is to be regretted, since such data should
+also be preserved. Furthermore, the IF-archive must accept story files
+in all formats and generate its own catalogues: the lack of any
+systematic way to do this imposes considerable work on the librarians.</p>
+<p>We might say that bibliographic data for IF can be provided at three
+levels:</p>
+<ul>
+<li>"internally", that is, it can be printed out by the work of IF - for
+instance in the game banner, or in response to a typed VERSION command;</li>
+<li>"locally", that is, it can be read and used by the run-time software
+playing the story file (the "interpreter"), or by other programs which
+have direct access to the file;</li>
+<li>"externally", that is, it can exist entirely independently of the
+story file, for instance in a bibliographic database like the one kept
+by CDDB for published CDs.</li>
+</ul>
+<p>All IF design systems provide internal metadata, though sometimes
+in a not very systematic way. TADS has provided local metadata since
+2001 by means of its "Game Information" file format: a TADS story
+file can contain what amounts to an embedded text file listing
+key/value pairs. As of 2006, Inform 7 makes similar arrangements.
+Inform 6 is typical of other 1990s design systems in that it
+provides at best patchy local metadata: the Z-machine story files it
+compiles expose release numbers and compilation dates at certain
+well-defined byte offsets in the file - but not the author's name,
+or the title. Prior to this treaty, no design system generated
+metadata intended for external use.</p>
+<h3 id="aims">1.2. Aims</h3>
+<p>The present treaty is an agreement between active design systems, the
+IF-archive and other interested parties. It provides for:</p>
+<ul>
+<li>ISBN-like unique ID numbers for story files, old and new,
+    produced by commercial or non-commercial compilers living
+    and dead;</li>
+<li>a standard format for cover art and bibliographic data;</li>
+<li>a web server able to provide these for a given ID number;</li>
+<li>a command-line tool able to identify and extract data from
+    story files in any format;</li>
+<li>reference software providing a format-neutral API for reading
+    story files, and removing "wrappers".</li>
+</ul>
+<p>The aim of the treaty, and of the Babel software, is to make it much
+easier to write new tools for players in which the distinction of
+which design system created which story file is much less visible.</p>
+<h3 id="signatories">1.3. Signatories</h3>
+<p>The following parties are the initial signatories:</p>
+<ul>
+<li>the IF-archive;</li>
+<li>the design system ADRIFT;</li>
+<li>the design system Hugo;</li>
+<li>the design system Inform;</li>
+<li>the design system TADS;</li>
+<li>the Blorb wrapper format (a packaging system for story files);</li>
+<li>the Zoom interpreter for OS X and Unix;</li>
+<li>the Windows Frotz interpreter for Windows;</li>
+<li>the Babel software.</li>
+</ul>
+<p>Current signatories now include:</p>
+<ul>
+<li>the design system Twine;</li>
+<li>the design system Alan.</li>
+</ul>
+<p>Other design systems and tools are welcome to join. It is important to
+note that the treaty also provides for support of works of IF produced
+by design systems now obsolete or fallen into disuse.</p>
+<p>The URL for the Treaty of Babel document and its associated resources,
+such as the Babel software, is:</p>
+<pre><code>http://babel.ifarchive.org/
+</code></pre>
+<p>Discussion of Treaty issues, including questions and proposals, may
+be sent to the Babel mailing list:</p>
+<pre><code>babel-if@googlegroups.com
+http://groups.google.com/group/babel-if
+</code></pre>
+<h2 id="requirements-on-design-systems">2. Requirements on design systems</h2>
+<h3 id="provision-of-metadata-and-cover-art">2.1. Provision of metadata and cover art</h3>
+<h4 id="requirements-and-guidelines-for-metadata">2.1.1. Requirements and guidelines for metadata</h4>
+<p>A design system is required to provide each newly published work
+with basic bibliographic information (or "metadata"). At minimum,
+this will be the name of the author and the title of the work,
+but a variety of other annotations are also possible. The treaty
+provides for a common core of data which can be used and shared
+between all tools - for instance, the author, or the date of first
+publication - but it does not limit the design system's ability to
+provide more, or to provide annotations of its own which are
+entirely specific to that system. In addition, the treaty makes
+no requirement on the design system to store the information in any
+particular format.</p>
+<p>While each new work is required to have an author and a title, it
+is legal for the design system to set these to "Anonymous" and/or
+"An Interactive Fiction" if the author chose not to specify:
+provided that the author has been given the opportunity to choose
+them, and encouraged to do so by the design system's documentation.</p>
+<p>Requirements and guidelines for the common core of metadata are
+given in <a href="#the-ifiction-format">&#167;5, "The iFiction format"</a> below. 
+To clarify the difference: requirements are such
+that a file of metadata (an "iFiction record") is illegal if
+requirements are broken, and a tool can refuse to deal with it;
+whereas tools must expect to have to deal with metadata which
+breaks the guidelines. A design system is required to pass on these
+guidelines to authors (rephrasing as it sees fit), and may at its
+own discretion enforce some of them, but it is not required to
+ensure that the guidelines are always kept.</p>
+<h4 id="requirements-and-guidelines-for-cover-art">2.1.2. Requirements and guidelines for cover art</h4>
+<p>A design system is not required to provide cover art for newly
+published works. However, if it does choose to do so, then that
+art must conform to the following requirements:</p>
+<ul>
+<li>Cover art must be a single square or rectangular JPEG or PNG
+image to be used as visual identification of the work, like a CD
+sleeve or a book jacket image. A PNG should not contain transparent
+pixels.</li>
+<li>Each side of the image is required to have a minimum length of
+120 pixels. The aspect ratio of the image is required to be between
+1:2 and 2:1 inclusive (i.e., it can be twice as tall as it is wide,
+or vice versa, but not more than that).</li>
+</ul>
+<p>In addition, IF authors should be asked (in the documentation for the
+design system) to follow the following guidelines:</p>
+<ul>
+<li>Cover art for new works of IF should be square. (While non-square cover
+art is legal, this is provided mainly to enable scanned box covers to
+serve as cover art for 1980s commercial IF story files.)</li>
+<li>The ideal dimensions for new cover art are 960 by 960.</li>
+<li>Neither height nor width should exceed 1200 pixels.</li>
+<li>Cover art should be designed in the expectation that it will often
+be seen in a thumbnail form where the longer of the two sides is
+reduced to 120 pixels. (Thus a square image will be 120 by 120, which
+is about 3cm square on most screens.)</li>
+<li>Cover art should not actually invite prosecution for obscenity.
+Those writing erotica should provide reasonably coy covers, as might
+be acceptable to ordinary bookshops. The IF-Archive and other sites
+are entitled to refuse to archive any items which do not follow this
+guideline.</li>
+</ul>
+<p>(Present builds of Inform 7 enforce the maximum-of-1200-pixels
+guideline as an absolute rule, but that is Inform's choice, and not
+a requirement of the treaty.)</p>
+<h3 id="the-ifid-unique-identifier">2.2. The IFID unique identifier</h3>
+<p>Under the present agreement, each different published work of IF, of
+whatever design system (if any), shall have its own unique ID code
+(henceforth a "IFID"). This will be analogous to the ISBN code assigned
+to each different published book, except that there will be no central
+authority handing out numbers: instead, a design system will be allowed
+to generate its own IFIDs, using one of the standard unique-ID-number
+algorithms. It is an absolute requirement that the new ID is to be
+generated in such a way as to be universally unique, not just unique
+among projects created by this user or this design system.</p>
+<p>The IFID shall be a sequence of between 8 and 63 characters, each of
+which shall be a digit, a capital letter or a hyphen.</p>
+<p>For example, here is an Inform 7-generated IFID:</p>
+<pre><code>1974A053-7DB0-4103-93A1-767C1382C0B7
+</code></pre>
+<p>As with published books, where an ISBN remains the same even if the
+book is reprinted with corrections, the IFID should be associated with
+a project, <em>not</em> a specific story file compiled from it. A re-release
+with bug fixes should have the same IFID.</p>
+<p>If a game is ported from one system to another (other than simply
+being moved from one version of a system to the next, e.g., by being
+moved from TADS 2 to TADS 3), the port receives a new IFID. Again,
+this is analogous to books: a different-format reissue of a book,
+such as a paperback of what was previously hardback, gets a new ISBN.</p>
+<h4 id="ifids-for-new-projects">2.2.1. IFIDs for new projects</h4>
+<p>A design system should assign each different published work a unique
+ID code (henceforth a "IFID").</p>
+<p>(Inform 7 creates a fresh IFID for a project whenever it opens a project
+which does not already have one. The IFID is generated using a UUID
+unique ID generating algorithm in the sense of ISO/IEC 11578:1996,
+with lower-case letters capitalized in accordance with the definition above.
+This is transparent to the user, except that a warning has been placed
+in the documentation: if a project already having a IFID is duplicated,
+and then the two copies are independently developed into quite different
+games, then there is a risk of releasing two different works with the
+same IFID. The documentation goes on to explain how to duplicate a
+project so that this will not occur.)</p>
+<h4 id="the-ifid-for-an-html-story-file">2.2.2. The IFID for an HTML story file</h4>
+<p>A number of design systems generate output in HTML format, including
+Twine, ChoiceScript, Adventuron, Ink, Texture, and others.</p>
+<p>Design systems may integrate an IFID into the output HTML by adding a
+<code>&lt;meta&gt;</code> tag to the <code>&lt;head&gt;</code> section of the output:</p>
+<pre><code>&lt;meta property="ifiction:ifid" content="448E73DF-2D2F-47E7-A494-A46B40D4CFB3"&gt;
+</code></pre>
+<p>(If the game comprises several HTML files, apply this to the start file.)</p>
+<p>You should include an RDFa <code>prefix</code> attribute with the standard iFiction
+URI, either on the <code>&lt;meta&gt;</code> tag or one of its parents. This ensures that
+your HTML will be valid RDFa. Some examples of this (other arrangements
+are possible):</p>
+<pre><code>&lt;head&gt;
+    &lt;meta prefix="ifiction: http://babel.ifarchive.org/protocol/iFiction/"
+        property="ifiction:ifid" content="448E73DF-2D2F-47E7-A494-A46B40D4CFB3"&gt;
+&lt;/head&gt;
+
+&lt;head prefix="ifiction: http://babel.ifarchive.org/protocol/iFiction/"&gt;
+    &lt;meta property="ifiction:ifid" content="448E73DF-2D2F-47E7-A494-A46B40D4CFB3"&gt;
+&lt;/head&gt;
+</code></pre>
+<p>(Note that the <code>babel</code> tool does not check for this prefix; it just looks
+for the <code>property="ifiction:ifid"</code> attribute. However, other web-based
+metadata tools require the prefix. Consider using <a href="https://www.w3.org/2012/pyRdfa/Validator.html">this validator</a>
+to verify that your file validates without warnings.)</p>
+<h4 id="ifids-for-legacy-projects">2.2.3. IFIDs for legacy projects</h4>
+<p>A design system may provide an algorithm to determine a IFID for a
+"legacy" story file, i.e., one which pre-dates the present standard.
+The method should be reasonably straight-forward and documented
+here. Moreover, the design system should then provide an implementation
+of this algorithm in portable C: see <a href="#the-babel-tool">&#167;2.3, "The "babel" tool"</a> below.</p>
+<p>Legacy story files not covered by such algorithms have IFIDs equal to
+their MD5 hashes, as in 
+<a href="#ifids-for-projects-falling-outside-this-agreement">&#167;2.2.4, "IFIDs for projects falling outside this agreement"</a> below.</p>
+<h5 id="the-ifid-for-a-legacy-z-code-story-file">2.2.3.1. The IFID for a legacy Z-code story file</h5>
+<p>Inform 7 compiles to Z-code, but by default wraps these Z-code story
+files into blorbs. The end user therefore sees the result as a blorb.
+However, by means of cutting tools, or by turning off the default
+preference, it is possible for the underlying Z-code story file
+to get out, and therefore it is possible that interpreters or other
+such tools will see "loose" Z-code story files in the wild, even for
+I7 projects.</p>
+<p>Such story files can be recognised because I7 brands them with the
+text such as this:</p>
+<pre><code>UUID://1974A053-7DB0-4103-93A1-767C1382C0B7//
+</code></pre>
+<p>(Recall that I7 uses a UUID-generating algorithm to create IFIDs.)
+This text is written in a character array in byte-accessible memory.
+Its location cannot be guaranteed, so the whole of byte-accessible
+memory must be scanned for the pattern UUID://..//. Note that this
+is unnecessary for story files pre-dating 2006.</p>
+<p>In the absence of an IFID found branded into the story file itself,
+Z-code story files can nevertheless be uniquely identified using numbers
+found in their headers (the first 64 bytes of the files). This is
+preferable to using MD5 hashes since it results in human-readable
+IFIDs, and also because Infocom's original story files sometimes crop
+up with spurious tails, e.g. paddings out to what were then disc page
+boundaries, usually with zero bytes.</p>
+<p>The three identifying elements of the header are:</p>
+<ul>
+<li>(a) The release number, a non-negative integer;</li>
+<li>(b) The serial code, almost invariably six digits stored as text;</li>
+<li>(c) The checksum, a 16-bit word.</li>
+</ul>
+<p>Story files can be divided into pre-1990 (Infocom) and post-1990
+(Inform). Post-1990 files have regular and reliable data for release
+number, serial code and checksum: the combination should safely identify
+a file. Pre-1990 files are more variable in how they handle checksums,
+in particular, but fortunately there are few of them.</p>
+<p>Pre-1990 story files have IFIDs in the following form:</p>
+<pre><code>ZCODE-11-860509         Trinity, first release
+ZCODE-12-860926         Trinity, second release
+</code></pre>
+<p>That is, "ZCODE", hyphen, release number, hyphen, serial code. In every
+case except three, the serial code will consist of six digits. The
+exceptions are:</p>
+<pre><code>ZCODE-2-AS000C          Zork I, Z-machine v1 release
+ZCODE-15-UG3AU5         Zork I, Z-machine v2 release
+ZCODE-7-UG3AU5          Zork II, Z-machine v2 release
+</code></pre>
+<p>A few other instances are known where the serial code is either non-ASCII
+or a numerical string which is not a compilation date in YYMMDD format.
+These appear to be either beta-test versions or copies modified by users
+to alter the serial number. In these cases, non-ASCII characters should
+be changed to hyphens. Some examples:</p>
+<pre><code>ZCODE-5-------          Zork I, Z-machine v1 release
+ZCODE-15-------         Zork I, Z-machine v2 release
+ZCODE-15-999999         Enchanter, test or modified version
+ZCODE-67-000000         Sorcerer, test or modified version
+</code></pre>
+<p>Post-1990 story files have IFIDs in the following form:</p>
+<pre><code>ZCODE-8-040205-6630     Savoir-Faire, release 8
+</code></pre>
+<p>Here the format is "ZCODE", hyphen, release number, hyphen, serial code,
+hyphen, checksum written as four hexadecimal digits 0...9, A...F.</p>
+<p>A sufficient algorithm to determine the IFID is therefore:</p>
+<ol>
+<li>Look at the start of the serial code. If the serial code
+    begins "8" or "9" or "00" to "05", go to step 3.</li>
+<li>Scan byte-accessible memory for the pattern of ASCII characters
+    UUID://...//, where "..." is a sequence of letters, numbers and
+    hyphens. If this is found, that's the IFID. Otherwise continue.</li>
+<li>Start with "ZCODE-", the release number, "-".</li>
+<li>Copy the six characters of the serial code, converting
+    any non-alphanumeric characters (in particular, nulls)
+    to hyphens.</li>
+<li>If the first character of the serial code is 0, 1, 2, 3, 4, 5,
+    6, 7, or 9 (but not 8), and the serial code is not "000000",
+    "999999", or "------", add "-" and the checksum in hexadecimal.</li>
+</ol>
+<p>The serial code characters are held in bytes 0x12 to 0x17 of a story
+file; the release number is an unsigned integer in bytes 0x02 and 0x03,
+the checksum similarly in bytes 0x1C and 0x1D. Thus, for instance, for
+Savoir-Faire release 8, the header bytes of the story file include -</p>
+<pre><code>0x02    0x00
+0x03    0x08
+0x12    0x30 = '0'
+0x13    0x34 = '4'
+0x14    0x30 = '0'
+0x15    0x32 = '2'
+0x16    0x30 = '0'
+0x17    0x35 = '5'
+0x1C    0x66
+0x1D    0x30
+</code></pre>
+<p>whence "ZCODE-8-040205-6630".</p>
+<h5 id="the-ifid-for-a-legacy-glulx-story-file">2.2.3.2. The IFID for a legacy Glulx story file</h5>
+<p>Inform 7-produced Glulx files will be branded with an IFID in the same
+manner as Z-code files.</p>
+<p>Older Glulx files come in two flavours: those produced by the biplatform
+inform compiler, and those produced by other tools.</p>
+<p>Inform-produced glulx files provide similar information to Z-code: a
+release number, serial number, and checksum, which can be used to
+identify them.</p>
+<p>Glulx files produced by other tools have only a checksum to identify
+them. In this case, the IFID is supplemented by the stated size of
+the initial memory map (which is equal to the size of the game file if
+it has not been padded).</p>
+<p>The size of the initial memory map is stored in a Glulx file as a 4-byte
+value beginning at byte address 12.</p>
+<p>The checksum is stored in as a 4 byte integer at byte address 32.</p>
+<p>An inform-produced Glulx file can be identified by the ASCII sequence
+"Info" at byte address 36.</p>
+<p>The release number is stored as a 2 byte integer at address 52.</p>
+<p>The serial number is 6 ASCII characters beginning at address 54,
+traditionally the compilation date.</p>
+<p>The algorithm for calculating the IFID of a Glulx file is as follows:</p>
+<ol>
+<li>Scan byte-accessible memory for the pattern of ASCII characters
+   <code>UUID://...//</code>, where "..." is a sequence of letters, numbers and
+   hyphens. If this is found, that's the IFID. Otherwise continue.</li>
+<li>The IFID begins with "GLULX-".</li>
+<li>For inform-generated files, skip to step 5.</li>
+<li>For non-inform-generated files, add the size of the initial
+   memory map as eight hexadecimal digits and skip to step 7.</li>
+<li>Add the release number, in decimal, followed by a hyphen.</li>
+<li>Add the serial code, converting any non-alphanumeric characters
+   to hyphens.</li>
+<li>Add a hyphen, then add the checksum in hexadecimal.</li>
+</ol>
+<h5 id="the-ifid-for-a-legacy-tads2-or-tads3-story-file">2.2.3.3. The IFID for a legacy TADS2 or TADS3 story file</h5>
+<p>The IFID for a legacy ".gam" TADS story file is the prefix "TADS2-",
+or "TADS3-", followed by its MD5 hash, with hexadecimal characters
+a to f written in upper case, A to F.</p>
+<h5 id="the-ifid-for-a-legacy-hugo-story-file">2.2.3.4. The IFID for a legacy Hugo story file</h5>
+<p>The IFID for a legacy ".hex" Hugo story file is the prefix "HUGO-"
+followed by its MD5 hash, with hexadecimal characters a to f written
+in upper case, A to F.</p>
+<h5 id="the-ifid-for-a-legacy-magnetic-scrolls-story-file">2.2.3.5. The IFID for a legacy Magnetic Scrolls story file</h5>
+<p>The set of existing Magnetic Scrolls games is small and fixed. As
+it is unlikely that any new Magnetic Scrolls story files are liable
+to become available in the near future, we have assigned the following
+IFIDs for the known Magnetic Scrolls games:</p>
+<pre><code>The Pawn                MAGNETIC-1
+Guild of Thieves        MAGNETIC-2
+Jinxter                 MAGNETIC-3
+Corruption              MAGNETIC-4
+Fish!                   MAGNETIC-5
+Myth                    MAGNETIC-6
+Wonderland              MAGNETIC-7
+</code></pre>
+<p>In several cases, more than one version of a story file is publically
+available. In keeping with <a href="#the-ifid-unique-identifier">&#167;2.2, "The IFID unique identifier"</a>,
+the story files use the same IFID across all versions.</p>
+<p>Each of these can be uniquely identified by the content of bytes 12
+through 32 of the story file:</p>
+<pre><code>IFID: MAGNETIC-1 00000000D5000000B40000000B00000000000000
+IFID: MAGNETIC-2 0001000100000000F10000000E00000000000000
+IFID: MAGNETIC-2 0004000107F80000E00000002134000020700000
+IFID: MAGNETIC-3 0002000100000000E00000006100000022000001
+IFID: MAGNETIC-4 00030000FF000000E0000000910000001E000001
+IFID: MAGNETIC-4 000400012560000100000000710F00001D880001
+IFID: MAGNETIC-5 0003000100000000E00000007D0000001F000001
+IFID: MAGNETIC-5 0004000124C40001000000005C5F000020980001
+IFID: MAGNETIC-6 00030000DD000000600000003400000013000000
+IFID: MAGNETIC-7 00040001523C0001000000004C6600002FA00001
+</code></pre>
+<p>In the unlikely event that a previously undocumented Magnetic Scrolls
+game should come to light, its IFID is "MAGNETIC-" followed by the MD5
+hash of the story file.</p>
+<h5 id="the-ifid-for-a-legacy-agt-story-file">2.2.3.6. The IFID for a legacy AGT story file</h5>
+<p>For historical reasons, AGT files are found in a variety of binary
+formats. The most modern of these is the AGX format used by the
+AGiliTy interpreter and Magx compiler. As tools to repackage older AGT
+binary formats into the AGX format are readily available, for the
+purposes of this treaty, we will assume that an "AGT story file"
+refers to an AGT program in the AGX format.</p>
+<p>An AGT story file can be identified by its AGT version and a 32-bit
+game signature.</p>
+<p>The AGT version number is stored as a little-endian 16 bit integer at
+the beginning of the game header block of of an AGX file.</p>
+<p>The AGT version number should be one of the following:</p>
+<pre><code>value           AGT version
+00000           v1.0
+01800           v1.18
+01900           v1.19
+02000           v1.20           ("Early Classic")
+03200           v1.32/COS
+03500           v1.35           ("Classic")
+05000           v1.5/H
+05050           v1.5/F (MDT)
+05070           v1.6   (PORK)
+08200           v1.82
+08300           v1.83
+10000           ME/1.0
+15000           ME/1.5
+15500           ME/1.55
+16000           ME/1.6
+20000           Magx/0.0
+</code></pre>
+<p>The last digit may be replaced by '1' to indicate that the game file
+is a "large" or "soggy" version.</p>
+<p>The game signature is stored as a little-endian 32-bit integer
+starting at the third byte in the game header block.</p>
+<p>The location of the game header block is stored as a little-endian
+32-bit integer stored at position 32 in the AGX file.</p>
+<p>The IFID for an AGT game is constructed thus:</p>
+<ol>
+<li>Start with "AGT-"</li>
+<li>Add the AGT version as a 5-digit decimal</li>
+<li>Add a hyphen, then add the game signature as 8 hexadecimal digits</li>
+</ol>
+<h5 id="the-ifid-for-a-legacy-level-9-story-file">2.2.3.7. The IFID for a legacy Level 9 story file</h5>
+<p>Though level9 files were designed using a platform-independent virtual
+machine format, they are generally encountered in a bundle with the
+original interpreter in the form of a disk image. In keeping with the
+treaty policy on dealing with archive files, the level9 module is not
+required to deal with compressed disk images. Users of level9 files
+are pointed to Paul David Doherty's l9cut program to extract these
+files from their archives.</p>
+<p>The following IFIDs have been assigned for Level 9 game files. Level 9
+games can be identified by their file size and checksum. For brevity,
+the complete table of these is not included here, but can be found in
+both the babel source and the source to l9cut.</p>
+<pre><code>Adrian Mole I           LEVEL9-001-n (where n is 1-9)
+Adrian Mole II          LEVEL9-002-n
+Adventure Quest         LEVEL9-003
+Champion of the Raj     LEVEL9-004-lang (lang is an ISO-639 language code)
+Colossal Adventure      LEVEL9-005
+Dungeon Adventure       LEVEL9-006
+Emerald Isle            LEVEL9-007
+Erik the Viking         LEVEL9-008
+Gnome Ranger            LEVEL9-009-n
+Ingrid's Back           LEVEL9-010-n
+Knight Orc              LEVEL9-011-n
+Lancelot                LEVEL9-012-n
+Lords of Time           LEVEL9-013
+Price of Magik          LEVEL9-014
+Red Moon                LEVEL9-015
+Return to Eden          LEVEL9-016
+Scapeghost              LEVEL9-017
+Snowball                LEVEL9-018
+The Archers             LEVEL9-019
+Worm In Paradise        LEVEL9-020
+</code></pre>
+<p>The suffix numbers -n are used to indicate story files which are parts
+of a sequence: several Level 9 games were split into independently
+playable episodes. "Champion of the Raj" is known to have had French,
+English and German versions.</p>
+<p>While it is unlikely that any new binaries will come to light, several
+historic versions of these games are not currently available for analysis.
+In the event that an undocumented Level 9 game should come to light,
+its IFID is "LEVEL9-" followed by the MD5 hash of the story file.</p>
+<h5 id="the-ifid-for-a-legacy-advsys-story-file">2.2.3.8. The IFID for a legacy AdvSys story file</h5>
+<p>The IFID for a legacy AdvSys story file is "ADVSYS-" followed by the MD5
+checksum of the file.</p>
+<h5 id="the-ifid-for-a-legacy-alan-story-file">2.2.3.9. The IFID for a legacy Alan story file</h5>
+<p>The IFID for a legacy Alan story file is "ALAN-" followed by the MD5
+checksum of the file.</p>
+<h5 id="the-ifid-for-a-legacy-html-story-file">2.2.3.10. The IFID for a legacy HTML story file</h5>
+<p>HTML games that lack the <code>&lt;meta&gt;</code> tag described above may include the
+text <code>UUID://...//</code> in a literal string or comment in the HTML.</p>
+<p>Older Twine games may incorporate an IFID in a <code>&lt;tw-storydata&gt;</code> tag in
+the HTML:</p>
+<pre><code>&lt;tw-storydata name="Title" creator="Twine" ifid="8665FC08-15CD-4BEC-B15A-7F72E34F4F51" ...&gt;
+</code></pre>
+<p>Otherwise, the IFID for a legacy HTML story file is "HTML-" followed by
+the MD5 checksum of the file.</p>
+<h5 id="the-ifid-for-an-executable-file">2.2.3.11. The IFID for an executable file</h5>
+<p>"Executable file" is an inherently vague definition. Any file which
+isn't in a known format should be presumptively identified as an
+unknown flavour of executable.</p>
+<p>For the executable formats listed below, the IFID takes the form:</p>
+<p>FORMAT-MD</p>
+<p>Where MD is the md5 checksum of the file, and FORMAT is a descriptive
+identifier for the particular flavor of executable:</p>
+<pre><code>MZ      MS-DOS, Windows or OS/2 Executable
+ELF     Linux ELF
+JAVA    Java bytecode
+AMIGA   AmigaOS executable
+SCRIPT  Unix-style shell script
+MACHO   MacOS X or GNU/Hurd Mach-O binary
+MAC     Pre-MaxOS X Macintosh binary
+</code></pre>
+<p>For other executable formats, the IFID is the MD5 checksum.</p>
+<h4 id="ifids-for-projects-falling-outside-this-agreement">2.2.4. IFIDs for projects falling outside this agreement</h4>
+<p>The IFID for a story file, or an executable program, not covered in
+the rest of <a href="#the-ifid-unique-identifier">&#167;2.2, "The IFID unique identifier"</a> above or in subsections
+below, is by definition its md5 hash code, with hexadecimal characters
+a to f written in upper case, A to F.</p>
+<h4 id="the-ifid-for-a-blorbed-story-file">2.2.5. The IFID for a blorbed story file</h4>
+<p>Blorb is a wrapper format (see below) which was originally devised
+to enable Z-machine games to manage sound and picture resources
+better. It was then generalised to handle glulx story files too, and
+in March 2006 the specification was opened up to allow its use as
+a wrapper for any story file format. It should therefore be assumed
+that a blorb might contain almost any kind of story file.</p>
+<p>Though blorb can package up other resources too, for our purposes a
+blorb archive has three ingredients:</p>
+<ul>
+<li>a story file;</li>
+<li>a cover image;</li>
+<li>a metadata chunk, containing an iFiction record.</li>
+</ul>
+<p>All three are optional, but a blorb with no story file inside is not
+itself a work of IF and so does not have a IFID.</p>
+<p>Any blorb generated by Inform 7 is guaranteed to contain a metadata
+chunk, but a small number of blorbs created between 2000 and 2005
+will not have, and three blorbs in circulation (the preview games
+for Inform 7) use a version of iFiction (v0.90) which pre-dates the
+standard in this document, and is not entirely compatible with it.
+They will be replaced with correct versions, but may still circulate
+in their uncorrected form.</p>
+<p>The IFID(s) for a blorb should be determined by the following method:</p>
+<p>(a) If there is a metadata chunk with an iFiction record (v1.0 or
+later), then parse this to find the IFID(s).</p>
+<p>(b) Otherwise, the IFID(s) for a blorb is/are the IFID(s) for the
+embedded story file, whatever format that has.</p>
+<h3 id="the-babel-tool">2.3. The "babel" tool</h3>
+<p>The babel utility is intended to be a Swiss army knife for
+metadata-related activities. Although the treaty agreement provides for
+common behaviours, it is in the babel source code that the treaty's
+parties collaborate directly, with functions provided by each system
+coming together to make up a single program. The utility is written
+in ANSI standard C with a view to portability: it can be compiled
+as a command-line tool in its own right, or can be incorporated into
+other tools and, in effect, provide them with an API for handling
+metadata and cover art independently of story file format.</p>
+<p>A central maintainer is responsible for the whole, while each design
+system is responsible for its own contribution.</p>
+<h4 id="wrappers-and-formats">2.3.1. Wrappers and formats</h4>
+<p>Babel's function is to examine a (possibly wrapped) story file and read
+its IFID(s), metadata and cover art, and to do so in a way which is
+independent of the wrapper and story file formats used. As detailed
+below, it provides these services with a common interface regardless
+of format: the mechanism to extract the title and author of a TADS
+story file, for instance, is the same as that for a zcode story file.</p>
+<p>By "wrapper" is meant a format which takes a story file, bundles it
+up with associated material, and results in a single object in the
+player's computer. To qualify as a wrapper format, a format should -</p>
+<ul>
+<li>(i) be used natively by one or more interpreters or browsers;</li>
+<li>(ii) include a story file in a format which can also exist and
+    be played without the surrounding wrapper.</li>
+</ul>
+<p>For instance, a .zip archive of a game's distribution does not count
+as a wrapper in this sense, since it isn't playable without unzipping:
+so it breaks (i). And it could not be said that the zcode format was
+a wrapper for the actual block of interpreted code in a story file,
+because the latter cannot exist separately from the header and its
+initial tables, which breaks (ii).</p>
+<p>At present the only wrapper in usage is Blorb, a format used to bind
+up both zcode and glulx story files with bibliographic data, cover
+art, pictures and sounds. But we might imagine other wrappers in
+future: for instance, it would be possible to imagine a .rar archive
+which was interpreted directly, as in the example of the "comic
+book RAR" (.cbr) format used by collectors of digital comics. Babel
+is therefore written in such a way that support for other wrappers
+can be added as needed.</p>
+<p>Babel is further written so that, as far as it is concerned, any
+supported wrapper can be used in conjunction with any supported
+format. Nobody has ever tried to wrap a TADS story file in a blorb,
+but if the blorb standard were revised to allow such a pairing, Babel
+would have no difficulty with the combination.</p>
+<p>Babel examines an object file in two stages:</p>
+<pre><code>Read file   --&gt;   Look at wrapper if any   --&gt;   Look at format
+</code></pre>
+<p>It may well be that what Babel needs to find - the cover image, for
+instance - is provided by the wrapper. If so, it may not get to the
+second stage of looking at the format of the story file inside.</p>
+<p>Code to handle wrappers is the responsibility of the maintainer of
+Babel. Code to handle the story file formats is the responsibility
+of the design system producing those formats, as outlined below.</p>
+<h4 id="contributing-to-babel">2.3.2. Contributing to "babel"</h4>
+<p>Each design system is asked to contribute a file containing a portable,
+rights-free C routine to provide babel with support for its run-time
+format. It may be assumed that "int32" is a 32-bit or larger signed
+integer.</p>
+<p>In the case of TADS 3, for instance, the file is "tads3.c": Inform
+contributes both "zcode.c" and "glulx.c", since it compiles to two
+independent virtual machines.</p>
+<p>The specification below describes what this file should contain.
+Setting up such a file involves a certain amount of work: the
+prototype babel distribution includes a header file,
+"treaty_builder.h", which offers C preprocessor macros able to
+simplify the process. However, it is not required that these macros
+be used: only that the end result of writing is a file satisfying
+the following description.</p>
+<p>The routine visible to, and used by, babel shall have the form:</p>
+<pre class="DefFun"><code>int32 SYSTEM_treaty(int32 selector,
+    void *story_file, int32 story_file_extent,
+    void *output, int32 output_extent)
+</code></pre>
+<p>where the prefix "SYSTEM_" is "tads3_", "zcode_", etc., as appropriate.
+(When other design systems are added, these prefixes should coincide
+with the <code>&lt;format&gt;</code> value used in iFiction - see <a href="#the-ifiction-format">&#167;5, "The iFiction format"</a>.)
+The implementation may create as many other routines, constants, etc.,
+as it chooses, provided their names have the same prefix.</p>
+<p>The selector may be one of the following constants, in which case
+the state of the pointers on entry is as given:</p>
+<pre><code>selector                            story_file  output
+GET_FORMAT_NAME_SEL                 NULL        not NULL
+GET_STORY_FILE_EXTENSION_SEL        NULL        not NULL
+GET_HOME_PAGE_SEL                   NULL        not NULL
+GET_FILE_EXTENSIONS_SEL             NULL        not NULL
+CLAIM_STORY_FILE_SEL                not NULL    NULL
+GET_STORY_FILE_METADATA_EXTENT_SEL  not NULL    NULL
+GET_STORY_FILE_COVER_EXTENT_SEL     not NULL    NULL
+GET_STORY_FILE_COVER_FORMAT_SEL     not NULL    NULL
+GET_STORY_FILE_IFID_SEL             not NULL    not NULL
+GET_STORY_FILE_METADATA_SEL         not NULL    not NULL
+GET_STORY_FILE_COVER_SEL            not NULL    not NULL
+</code></pre>
+<p>Where one of the pointers is NULL, its given extent will be 0;
+where it is not NULL, it must point to byte-accessible memory of
+the given extent. "story_file" points to a complete story file,
+fully loaded into memory: the routine must not write to this.
+This will always be the actual story file: if babel is working on
+a blorb which contains a zcode-format story file, say, the pointer
+will be to the zcode story file.</p>
+<p>"output" points to a buffer to which text or other data can be
+written. On entry, the contents of this buffer are undefined.
+If text is written to the buffer, it should be null terminated.
+Under no circumstances may the buffer be written beyond its
+extent; but the extent is guaranteed to be at least 512 bytes.
+Text in the buffer must be encoded with UTF-8 Unicode.</p>
+<p>The return value of the treaty routine will be one of the following:</p>
+<pre><code>NO_REPLY_RV
+INVALID_STORY_FILE_RV
+UNAVAILABLE_RV
+IMPROPER_USAGE_RV
+</code></pre>
+<p>or else a positive integer value depending on the selector.</p>
+<p><code>NO_REPLY_RV</code> is used either if there is no meaningful return value,
+or if the requested data cannot be found in the story file, but
+there was no indication that the story file was broken or invalid.
+(The routine is <em>not</em> required to check the story file for validity:
+it is simply asked to report any problem it does hit.)</p>
+<p><code>INVALID_STORY_FILE_RV</code> means that something went wrong, and that the
+story file looks to be broken or invalid.</p>
+<p><code>UNAVAILABLE_RV</code> means that support for this selector is not provided,
+and it should be returned if the selector is not recognised (in
+case new selectors are added in a later revision of this standard).</p>
+<p><code>IMPROPER_USAGE_RV</code> means that the selector believes it has been called
+with parameters which are not as they should be, according to the
+specification above.</p>
+<p>To take the selectors in turn:</p>
+<pre class="DefFun"><code>GET_FORMAT_NAME_SEL
+</code></pre>
+<p>Copies the design system's format into the output buffer: e.g.,
+"tads2". This must be the value as defined in 
+<a href="#the-ifiction-format">&#167;5, "The iFiction format"</a> below under <code>&lt;format&gt;</code>.</p>
+<p>Returns <code>NO_REPLY_RV</code>.</p>
+<pre class="DefFun"><code>GET_STORY_FILE_EXTENSION_SEL
+</code></pre>
+<p>Outputs the single best extension for the given story file.  Thus,
+".z5" for version 5 Z-code, ".gam" for TADS 2, etc.  Returns the
+length of the output string, or a suitable error value.  This
+should return zero only if this particular game file should not
+have any extension.</p>
+<pre class="DefFun"><code>GET_HOME_PAGE_SEL
+</code></pre>
+<p>Copies a URL for the design system's home page into the output
+buffer: e.g., "http://www.tads.org/".</p>
+<p>Returns <code>NO_REPLY_RV</code>.</p>
+<pre class="DefFun"><code>GET_FILE_EXTENSIONS_SEL
+</code></pre>
+<p>Copies a comma-separated list of filename extensions typically
+associated with the design system, flattened to lower case, into
+the output buffer:
+e.g., for zcode, ".z3,.z4,.z5,.z6,.z7,.z8"
+(note: ".blorb", ".zblorb", etc., are not included: babel handles
+blorbs automatically)</p>
+<p>Returns <code>NO_REPLY_RV</code>.</p>
+<pre class="DefFun"><code>CLAIM_STORY_FILE_SEL
+</code></pre>
+<p>Returns <code>NO_REPLY_RV</code> if this appears to be a story file produced
+by this design system; or <code>INVALID_STORY_FILE_RV</code> if not.</p>
+<p>(Only the most casual, superficial check is needed. For instance,
+the first twelve bytes of a blorb always match <code>FORM????IFRS</code> for
+some <code>????</code>, and this is unlikely to be true of a randomly found file
+which is not a blorb. So checking those twelve bytes is sufficient
+to say that the file "appears to be" a blorb.)</p>
+<pre class="DefFun"><code>GET_STORY_FILE_METADATA_EXTENT_SEL
+</code></pre>
+<p>Returns the extent (in bytes) of the iFiction record for the story
+file, plus 1 (to allow for a zero termination byte); or, if there
+is no metadata, returns <code>NO_REPLY_RV</code>. This is likely to be called
+immediately before <code>GET_STORY_FILE_METADATA_SEL</code>, in order to
+establish what size of output buffer is needed to hold the metadata.</p>
+<pre class="DefFun"><code>GET_STORY_FILE_METADATA_SEL
+</code></pre>
+<p>Copies the metadata for the story file, in "iFiction" format, to
+the output buffer, together with a zero termination byte, and
+returns the total number of bytes copied (including the zero
+termination byte); or, if there is no metadata, returns <code>NO_REPLY_RV</code>.</p>
+<p>If the output buffer is too small, returns <code>IMPROPER_USAGE_RV</code>.</p>
+<p>Note that it is <em>not</em> required that the story file contain metadata
+written in "iFiction" format: only that this selector is able
+to translate its metadata into "iFiction" format on request.
+Similarly, it is not required that the story file's own metadata be
+encoded in UTF-8 Unicode, only that the metadata be written in that
+encoding when this selector does its work. It should run quickly in
+comparison with file input/output, but does not especially need to
+be fast.</p>
+<pre class="DefFun"><code>GET_STORY_FILE_COVER_EXTENT_SEL
+</code></pre>
+<p>Returns the extent (in bytes) of the cover art image in the story
+file, if there is one; or, if not, returns <code>NO_REPLY_RV</code>. This is
+likely to be called immediately before <code>GET_STORY_FILE_COVER_SEL</code>,
+in order to establish what size of output buffer is needed to
+hold the cover art.</p>
+<pre class="DefFun"><code>GET_STORY_FILE_COVER_SEL
+</code></pre>
+<p>Copies the cover art for the story file into the output buffer,
+returning the size in bytes; or, if there is no cover art,
+returns <code>NO_REPLY_RV</code>.</p>
+<p>If the output buffer is too small, returns <code>IMPROPER_USAGE_RV</code>.</p>
+<pre class="DefFun"><code>GET_STORY_FILE_COVER_FORMAT_SEL
+</code></pre>
+<p>Returns <code>JPEG_COVER_FORMAT</code> if the cover art is in JPEG (JFIF)
+format; <code>PNG_COVER_FORMAT</code> if the cover art is in PNG format;
+<code>NO_REPLY_RV</code> if there is no cover art. No other formats of cover
+art are legal.</p>
+<pre class="DefFun"><code>GET_STORY_FILE_IFID_SEL
+</code></pre>
+<p>Finds the IFID(s) and copies them as a comma-separated list into
+the output buffer, and then returns the number of IFIDs in the
+list; or returns <code>NO_REPLY_RV</code> if no IFID could be determined.</p>
+<h4 id="algorithm-for-determining-the-format-of-a-story-file">2.3.3. Algorithm for determining the format of a story file</h4>
+<p>(a) If a story file is a blorb, then the blorb executable chunk
+records the format of the real story file inside. This should be
+checked by seeing if the relevant format's <code>CLAIM_STORY_FILE_SEL</code>
+selector is happy: if not, then babel is allowed to declare the
+story file invalid. The blorb is similarly deemed invalid if this
+format disagrees with the format claimed in its metadata chunk
+(if there is one).</p>
+<p>(b) If not, then we have a story file which might be one of many
+formats, or might even be (say) an MS-DOS executable. The filename
+extension is considered as providing a clue, so:</p>
+<ul>
+<li>(i) Babel runs through the formats, polling each with
+    <code>GET_FILE_EXTENSIONS_SEL</code> to see if the file extension is one
+    that any of them know. This makes a list of "likely" formats
+    (extension matching) and a list of the remaining "unlikely"
+    ones.</li>
+<li>(ii) Babel offers the story file to each likely format in turn
+    with <code>CLAIM_STORY_FILE_SEL</code>; then to each unlikely format in turn.
+    The first to claim the story file is the winner. If no format
+    claims it, then the format is "unknown".</li>
+<li>(iii) Within each list - the likely and unlikely lists, that is -
+    the formats are checked in popularity order, i.e., in order of
+    the size of the published corpus for the formats: so probably
+    zcode, then tads2, then any others which may provide treaty
+    routines.</li>
+</ul>
+<h2 id="guidelines-for-interpreters-and-browsers">3. Guidelines for interpreters and browsers</h2>
+<p>An "interpreter" is a program which plays the story file: for some
+design systems a single "run-time" program is provided; for others
+a variety of rival interpreters exist. A "browser" is a program which
+manages and offers a choice of story files. One may imagine an
+interpreter which is not a browser - it would only play a single
+story file; and one may imagine a browser which is not an
+interpreter - it would play story files by calling an external
+application (i.e., an interpreter for the given format). But it is
+also possible to write tools which are both browsers and interpreters.</p>
+<p>There are no formal requirements on these tools, but the spirit of
+this standard is that the following will be considered good practice.
+Some of these guidelines are applicable to interpreters, some to
+browsers, and some to both.</p>
+<p>(a) To use basic bibliographic data if it is available, even if
+only to give windows and/or saved games sensible titles, or to
+provide an "About this Game" menu option;</p>
+<p>(b) If possible, to be able to show a preview of a game based on its
+cover art and bibliographic data, before play begins;</p>
+<p>(c) If possible, to be able to browse through a selection of games,
+tabulated using their bibliographic data;</p>
+<p>(d) If possible, to be able to show previews and to browse story
+files compiled by any design system signing up to the standard,
+though probably "playing" them by launching an external application -
+the run-time for the design system in question; failing that, to
+display a message such as "Lady Eustace's Diamonds appears to be
+a work of interactive fiction in XYZ format. You will need to
+obtain special XYZ software in order to play it." and a link to
+the XYZ home page.</p>
+<p>(e) If possible, to allow the user to edit the metadata of games
+in their collection (in a way which does <em>not</em> involve alteration to
+the story file, but simply editing of the interpreter's own copy
+of the metadata for its archive of games - see below);</p>
+<p>(f) If possible, given an object with no metadata, or no obvious
+file type, to attempt to fetch metadata and/or cover art for it
+from the IF-Archive (see below), and then employ this in the
+ways suggested above.</p>
+<p>Interpreters or browsers fetching cover art from the IF-Archive
+are <em>required</em> to cache the images they fetch, in order to minimise
+bandwidth usage. They should be written on the assumption that a
+fetch may take several seconds.</p>
+<h2 id="requirements-on-the-if-archive">4. Requirements on the IF-archive</h2>
+<p>When authors complete and wish to publish a new work, they
+"upload" it to the IF-archive's incoming folder. There it remains
+until one of the librarians works through the new uploads and files
+them appropriately: we shall call this "accessioning". Users of the
+IF-archive can browse the directories freely, and download as they
+like.</p>
+<p>As part of this new standard, however, the IF-archive will offer
+further services: it will provide metadata on request ("serving")
+to any interpreters or other tools which ask for it, and it will
+accept metadata on existing works (whether or not archived) as they
+are provided by volunteers ("contributing").</p>
+<p>Note that other archives could provide similar facilities: it would be
+natural to be able to access IFDB via the IFID or TUID, and this would
+make a neat way for interpreters to point to reviews, etc., on a game.</p>
+<h3 id="uploading">4.1. Uploading</h3>
+<p>A story file may be uploaded as a single object, such as
+"Henrietta.zblorb" or "DDD.gam", or as a zipped archive such as
+"Bronze.zip", which contains both the story file and its associated
+external resources - manuals, maps, etc., typically in plain text
+or PDF format, and might expand to a short set of files as follows:</p>
+<pre><code>Bronze.zblorb
+Bronze Manual.pdf
+Map.pdf
+solution.txt
+</code></pre>
+<h3 id="accessioning">4.2. Accessioning</h3>
+<p>(a) When a newly uploaded work is accessioned, the librarian should
+run the "babel" command-line tool to examine the story file. This
+will produce the IFID (always), file(s) containing the iFiction record
+(if any) and the cover image (if any).</p>
+<p>If the iFiction record contains several IFIDs, as for instance to
+list multiple releases of an Infocom game under a common IFID (see
+<a href="#identification">&#167;5.5, "Identification"</a> below), "babel" will create one copy of both the
+record and the image, filenamed with each IFID.</p>
+<p>(b) If any IFID duplicates one already held by the IF-archive, the
+librarian will investigate to see if they are essentially different
+works:</p>
+<ul>
+<li>(i) If so, the new upload will be rejected, and the author will
+    have to resubmit. Such accidents are likely to be rare.</li>
+<li>(ii) If not, the upload will be allowed, and will become the
+    "main" version held by the IF-archive under that IFID: the new
+    upload's cover art and iFiction will replace the old. The
+    librarian may, at their discretion, delete the old story file, so
+    that only the new version remains. Such replacements with
+    revised versions are likely to be fairly common.</li>
+</ul>
+<p>(c) If there is an iFiction file, it will be filed in some appropriate
+directory as</p>
+<pre><code>XXXXX.iFiction
+</code></pre>
+<p>where XXXXX is the IFID.</p>
+<p>(d) If there is a cover image, it will be reduced in size to the
+standard thumbnail dimensions: that is, such that its longer side is
+120 pixels. (This will usually mean it is 120 by 120.) A standard
+Unix tool such as "sips" should be able to do this easily enough.
+The result will be filed in some appropriate directory as</p>
+<pre><code>XXXXX.png  or  XXXXX.jpg
+</code></pre>
+<p>where XXXXX is the IFID.</p>
+<h3 id="serving">4.3. Serving</h3>
+<p><em>Note: The IF-archive has not implemented this section. An effort is
+in progress to support metadata in a manner compatible with IFDB. This
+may result in changes to the plan proposed here.</em></p>
+<p>The IF-archive will arrange that page hits are URLs in the following
+IFID-based form result in predictable data served back:</p>
+<pre class="DefFun"><code>http://babel.ifarchive.org/metadata/IFID
+</code></pre>
+<ul>
+<li>fetches the iFiction record for this IFID, giving it the mime
+type of a UTF-8 Unicode text file, as indeed it is; or fetches
+a 404 error page if no metadata exists for this IFID</li>
+</ul>
+<pre class="DefFun"><code>http://babel.ifarchive.org/cover/IFID
+</code></pre>
+<ul>
+<li>fetches the cover art, as a JPEG or PNG, or a 404 error page</li>
+</ul>
+<pre class="DefFun"><code>http://babel.ifarchive.org/download/IFID
+</code></pre>
+<ul>
+<li>fetches the story file, or a 404 error page</li>
+</ul>
+<pre class="DefFun"><code>http://babel.ifarchive.org/holdings/IFID/*
+</code></pre>
+<ul>
+<li>fetches the file * associated with this IFID. Here, "*" would be
+the leafname: "Bronze Manual.pdf", for instance</li>
+</ul>
+<h3 id="contributing">4.4. Contributing</h3>
+<p><em>Note: The IF-archive has not implemented this section. An effort is
+in progress to support metadata in a manner compatible with IFDB. This
+may result in changes to the plan proposed here.</em></p>
+<p>(a) The IF-archive will provide mechanisms for volunteers to upload
+records on games which are not themselves being uploaded, via a
+web page form and/or an ftp folder for uploads.</p>
+<p>Volunteers will be asked to upload one record for each game, in
+the form of a folder (or zip archive) which contains the following:</p>
+<pre><code>metadata.iFiction
+cover.jpg   or   cover.png (optional)
+url.txt (optional)
+</code></pre>
+<p>The archive is free to reject uploads not following this rule.</p>
+<p>The "url.txt" file contains the location in the Archive, if data is
+being provided on a story file which is already there. Volunteers will
+be instructed to supply a complete URL.</p>
+<p>(b) Such uploads will also be periodically accessioned by a
+librarian. Each .iFiction file will be run through "babel", which will
+reject it if it does not properly conform to the iFiction format,
+but will otherwise print out the IFID(s) and make canonically-named
+copies, one for each IFID. The image will also be canonically
+named, reduced if necessary as in 4.2 above, and duplicated if
+necessary.</p>
+<ul>
+<li>(i) If, in the librarian's opinion, a better record already exists
+    for that IFID, the new one will be rejected.    </li>
+<li>(ii) If a "url.txt" file is provided, the librarian will check
+    the IFID of the story file at that location using "babel": if it
+    differs from the one claimed, the IFID produced by "babel" is
+    deemed to be the correct one.</li>
+</ul>
+<p>(c) Image and .iFiction file(s) will then be stored, ready to be served
+as in 4.3 above.</p>
+<h2 id="the-ifiction-format">5. The iFiction format</h2>
+<h3 id="purpose-and-scope">5.1. Purpose and scope</h3>
+<p>This format was created for Andrew Hunter's Z-machine interpreter
+"Zoom", which collects and organises interactive fiction story files in
+the same way that Apple's "iTunes" collects and organises music files.
+"iFiction" was the format of Zoom's database of metadata tags for its
+story files: compare, for instance, the XML file output by the "Export
+Library" menu option in iTunes. The format was used experimentally by
+Zoom, then amended and introduced as a new segment into the Inform
+wrapper format Blorb: the first published story files to contain
+embedded iFiction records appeared in February 2006, though this
+treaty revises the format substantially from that original state.</p>
+<p>The metadata associated with a story file will be called its "iFiction
+record". If we compare the story file to the pages of a book written
+by the author, then the iFiction record is the text printed on the
+cover, title and imprint pages - the part of a book normally put
+together by the publisher. The content is comparable with the release
+information handed out to distributors by record companies, or the
+Neilson book database which feeds Amazon and similar sites.</p>
+<p>The iFiction record is primarily intended for bibliographic purposes:
+that is, purposes such as identification, classification, automated
+downloading, librarianship. It is not suitable for indexing the textual
+content of a work of IF, nor for expressing machine-followable
+cross-references between works of IF, or between IF story files and
+otherwise unrelated cultural artefacts (such as printed books). While
+the description of work A could certainly say that is a translation
+into French of work B, for instance, or an adaptation of Dickens's
+"A Tale of Two Cities", iFiction does not provide machine-followable
+links. (Equipped with Google, any reader of iFiction data would have
+no trouble in finding such remote resources manually.) iFiction
+records are written in XML rather than any more sophisticated data
+representation language so that only very light tools are needed to
+handle it: iFiction text is easy to read, write and transmit via
+email or the Web.</p>
+<p>The iFiction record is also not intended to specify a license for the
+story file, though design systems are entitled to record this in their
+own segments of the iFiction format if they wish to do so. Nothing
+should be inferred from the absence of such license information in
+the iFiction record. Similarly, the copyright record for a story file
+is recorded in the file itself, and not in the iFiction record.</p>
+<h3 id="encoding">5.2. Encoding</h3>
+<p>An iFiction record is encoded in UTF-8 Unicode.</p>
+<p>Where iFiction data is stored in a file, this file should have the
+file extension ".iFiction". It is permitted to begin with the UTF-8
+encoding of the Unicode BOM sequence, 0xEF 0xBB 0xBF, which serves as
+an optional marker of the encoding type; but it is not required to
+do so.</p>
+<h3 id="storage-in-files">5.3. Storage in files</h3>
+<p>An iFiction file should take the form:</p>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ifindex version="1.0" xmlns="http://babel.ifarchive.org/protocol/iFiction/"&gt;
+    &lt;!-- Bibliographic data recorded by Inform 7 build 3F47 --&gt;
+    ...
+&lt;/ifindex&gt;
+</code></pre>
+<p>where "..." is a sequence of one or more story file records. The
+comment is optional and should not be parsed by tools looking at the
+record; Inform writes in such a comment merely for the sake of helping
+to debug if problems are found in the records it writes.</p>
+<p>(The ability to hold more than one story file record is provided so
+that an interpreter, or similar tool, can use the same schema for a
+database of all the metadata known to it.)</p>
+<p>The name-space is defined in the root element <code>&lt;ifindex&gt;</code> to facilitate
+future developments, and to make it easier for XML tools to merge
+data from iFiction files.</p>
+<h3 id="story-file-records">5.4. Story file records</h3>
+<p>Data on an individual story file is given within <code>&lt;story&gt;</code> ... <code>&lt;/story&gt;</code>
+tags. This is in turn subdivided:</p>
+<pre><code>&lt;story&gt;
+    &lt;identification&gt;
+        ...
+    &lt;/identification&gt;
+    &lt;bibliographic&gt;
+        ...
+    &lt;/bibliographic&gt;
+    ...
+&lt;/story&gt;
+</code></pre>
+<p>We shall call these subdivisions "sections". The sections are:</p>
+<pre><code>tag                                 who originates the data
+&lt;identification&gt;    mandatory       design system
+&lt;bibliographic&gt;     mandatory       author
+&lt;resources&gt;         optional        author
+&lt;contacts&gt;          optional        author
+&lt;cover&gt;             optional        design system
+&lt;releases&gt;          optional        design system
+&lt;colophon&gt;          optional        design system, or browser tool, etc.
+&lt;annotation&gt;        optional        third parties, player's tools, etc.
+&lt;zcode&gt;             optional*       design system
+&lt;tads2&gt;             optional*       design system
+&lt;tads3&gt;             optional*       design system
+&lt;glulx&gt;             optional*       design system
+&lt;hugo&gt;              optional*       design system
+&lt;adrift&gt;            optional*       design system
+</code></pre>
+<p>* Permitted only if the project belongs to this format, so that at most
+one of these can be given: but it is legal not to give it at all.</p>
+<p><code>&lt;annotation&gt;</code> is a special case. A design system is forbidden to produce
+an <code>&lt;annotation&gt;</code> section in the iFiction records it produces. The
+section is expressly intended for third parties: for players, annotating
+their own collections using iTunes-like browsers; for review sites such
+as IFDB, recording reviews, ratings and other user experiences;
+and so on. Whether the IF-archive will serve records containing
+<code>&lt;annotation&gt;</code> is a matter of policy for the archive, and not governed
+here.</p>
+<p>All other sections can be produced by a design system, but those marked
+above as originating with the author will stem fairly directly from
+the author's explicit instructions, whereas the others are likely to be
+generated automatically on their behalf. (For instance, the author will at
+some stage actually type the title, but the design system would likely
+calculate the pixel dimensions of the cover art, the serial number of
+the compiled story file, etc., automatically on each compilation.)</p>
+<h3 id="identification">5.5. Identification</h3>
+<p>The <code>&lt;identification&gt;</code> section is mandatory. The content here identifies
+to which story file the metadata belongs. (This is necessary because
+the metadata may be held on some remote server, quite separate from
+the story file.)</p>
+<p>This section contains two mandatory tags and one optional one, as
+in the following example:</p>
+<pre><code>&lt;identification&gt;
+    &lt;ifid&gt;1974A053-7DB0-4103-93A1-767C1382C0B7&lt;/ifid&gt;
+    &lt;format&gt;zcode&lt;/format&gt;
+    &lt;tuid&gt;plvzam05bmz3enh8&lt;/tuid&gt;
+&lt;/identification&gt;
+</code></pre>
+<h4 id="ifid">5.5.1. <code>&lt;ifid&gt;</code></h4>
+<p>Note that there <em>must</em> be at least one IFID: this may, of course, be
+an MD5 checksum. With all new IF projects, a design system should
+supply one and only one IFID. Subsequent releases with bugs fixed,
+etc., will have the same IFID as the first-published story file.</p>
+<p>But in an iFiction record for an old commercial work of IF existing
+in multiple releases, it is legal to quote more than one IFID. For
+instance, here is the <code>&lt;identification&gt;</code> section of a record which
+the IF-archive could usefully hold on Infocom's "Sorcerer" (1984):</p>
+<pre><code>&lt;identification&gt;
+    &lt;ifid&gt;ZCODE-18-860904&lt;/ifid&gt;
+    &lt;ifid&gt;ZCODE-15-851108&lt;/ifid&gt;
+    &lt;ifid&gt;ZCODE-13-851021&lt;/ifid&gt;
+    &lt;ifid&gt;ZCODE-6-840508&lt;/ifid&gt;
+    &lt;ifid&gt;ZCODE-4-840131&lt;/ifid&gt;
+    &lt;ifid&gt;ZCODE-67-000000&lt;/ifid&gt;
+    &lt;format&gt;zcode&lt;/format&gt;
+&lt;/identification&gt;
+</code></pre>
+<p>When an iFiction record relates to a second or subsequent edition of
+a work which previously had a different IFID, it is similarly legal
+to give the IFIDs of earlier versions. For example, for Emily Short's
+"Savoir-Faire" (2004),</p>
+<pre><code>&lt;identification&gt;
+    &lt;ifid&gt;731F0480-5CB5-4340-B65B-384FC6B1F5B4&lt;/ifid&gt;
+    &lt;ifid&gt;ZCODE-8-040205-6630&lt;/ifid&gt;
+    &lt;format&gt;zcode&lt;/format&gt;
+&lt;/identification&gt;
+</code></pre>
+<p>This is generated by Inform 7 when it makes a new blorbed edition out
+of an old Inform 6-compiled story file: the I7 IFID comes first.</p>
+<p>In all cases of doubt, if a single IFID must be extracted, the first
+one occurring in the story file should be used. Note that the first
+IFID in the example for "Sorcerer", above, is the final release -
+the best one to have.</p>
+<h4 id="format">5.5.2. <code>&lt;format&gt;</code></h4>
+<p>The <code>&lt;format&gt;</code> is also mandatory, and here there can be only one value
+supplied. It is the format of the story file to be executed, not the
+name of the design system which compiled it; and in the case of a
+wrapper format such as Blorb, it is the format of the story file
+inside, so that "<code>&lt;format&gt;blorb&lt;/format&gt;</code>" is incorrect. The value of
+<code>&lt;format&gt;</code> may therefore be one of the following:</p>
+<pre><code>zcode, glulx, tads2, tads3, hugo, alan, adrift, level9, agt,
+magscrolls, advsys, html, executable
+</code></pre>
+<p>No distinction is made here between sub-versions (e.g. v4 of the
+Z-machine vs. v8 of the Z-machine): the distinction between TADS 2
+and TADS 3 is made because their virtual machines are so completely
+different that there is no joint interpreter. (It is thought that
+no TADS 1 files exist in the wild: if any are found, they have
+format "tads2" for purposes of this Treaty.) The idea is that the
+main interpreters for any given format are always likely to be able
+to handle all the likely sub-versions of that format which they
+encounter. A design system wanting to record more detail on the
+format is free to do so within its own part of the iFiction record.</p>
+<p>The format "html" means that this is an HTML file, perhaps collected
+with associated files such as CSS and Javascript. The intended
+interpreter is a standard web browser.</p>
+<p>The format "executable" means that this is not a virtual-machine-based
+story file but a program for a physical machine: say, an old MS-DOS
+executable. There is therefore no applicable interpreter. This
+format is only likely to be seen in external metadata, at sites such
+as the IF-archive.</p>
+<p>Other format values may be added in future revisions. A value not
+listed above may be assumed to be in informal use by the users of an
+IF system not yet part of the Treaty. We expect that such systems
+will be added to this document in due course.</p>
+<p>(New format values must not collide with tag names already defined by
+this document. This ensures that format-specific tags can be used
+without confusion.)</p>
+<h4 id="tuid">5.5.3. <code>&lt;tuid&gt;</code></h4>
+<p>This is an optional tag, whose value is a string of letters and digits.
+If supplied, it should be the Interactive Fiction Database identifier
+(TUID) for the work: for instance, "Curses" is "plvzam05bmz3enh8".</p>
+<p>The Interactive Fiction Database is found at
+<a href="https://ifdb.org/">ifdb.org</a>.</p>
+<h4 id="bafn">5.5.4. <code>&lt;bafn&gt;</code></h4>
+<p>This is an optional tag, whose value is a non-negative integer. If
+supplied, it should be the "Baf's Guide to the IF Archive" identifying
+number for the work: for instance, "Curses" is 55; "The PK Girl" is
+1897.</p>
+<p>This tag was provided solely for the convenience of people who wish
+to translate existing metadata at Baf's Guide to new iFiction records,
+particularly for items in obscure or long-dead formats. As Baf's Guide
+is no longer extant, it is not expected that iFiction records generated
+for new games will contain this tag.</p>
+<h3 id="bibliographic">5.6. Bibliographic</h3>
+<p>The <code>&lt;bibliographic&gt;</code> section is mandatory.</p>
+<p>This section contains bibliographic data. The tags inside can occur in
+any order and all are optional except <code>&lt;title&gt;</code> and <code>&lt;author&gt;</code>, which are
+mandatory. Example:</p>
+<pre><code>&lt;bibliographic&gt;
+    &lt;title&gt;Lakeside Living&lt;/title&gt;
+    &lt;author&gt;Emily Short&lt;/author&gt;
+    &lt;language&gt;en-US&lt;/language&gt;
+    &lt;headline&gt;An Interactive Example&lt;/headline&gt;
+    &lt;firstpublished&gt;2006&lt;/firstpublished&gt;
+    &lt;genre&gt;Fiction&lt;/genre&gt;
+    &lt;group&gt;Inform&lt;/group&gt;
+    &lt;forgiveness&gt;Merciful&lt;/forgiveness&gt;
+    &lt;description&gt;This is example 194, for what it's worth.&lt;/description&gt;
+&lt;/bibliographic&gt;
+</code></pre>
+<p>The rules below are once again divided into requirements (no system
+generating iFiction records is permitted to violate these) and
+guidelines (which authors should be encouraged to follow, and design
+systems are at liberty to force them to follow, but which other tools
+should not assume have always been followed).</p>
+<p>General requirements for the <code>&lt;bibliographic&gt;</code> section:</p>
+<ul>
+<li>These values are all textual except <code>&lt;seriesnumber&gt;</code>, which is a
+non-negative integer.</li>
+<li>A textual value is a sequence of one or more Unicode characters in
+which the following string escapes, and no others, must be used:</li>
+</ul>
+<pre class="Plain"><code>&amp;       &amp;amp;
+&lt;       &amp;lt;
+&gt;       &amp;gt;
+</code></pre>
+<ul>
+<li>A textual tag value other than <code>&lt;description&gt;</code> must not contain any
+white space except for single spaces, which must not occur at the start
+or end of the string. (Thus tab characters, non-breaking and thin spaces,
+etc., are prohibited, as is leading or trailing space, and doubled
+spacing such as "... here.  Between sentences...".)</li>
+<li>A textual tag value is not permitted to be the empty string.</li>
+<li>Uniquely, the <code>&lt;description&gt;</code> value is permitted to contain paragraph
+breaks, which must be encoded as "<code>&lt;br/&gt;</code>". The description is nevertheless
+written in plain text, not HTML, and can contain no other tags. The other
+textual values must not contain any tags in angle-brackets.</li>
+<li>The <code>&lt;description&gt;</code> is permitted to contain white space in the form
+of newlines and tab characters, and to contain multiple white space
+characters in succession: these are always treated as single spaces.
+However, the <code>&lt;description&gt;</code> must not begin or end with white space, and
+must not be empty.</li>
+</ul>
+<p>General guidelines for the <code>&lt;bibliographic&gt;</code> section:</p>
+<ul>
+<li>While there is in principle no upper limit on the length of the
+textual values, writers of interpreters and browsers will wish to
+truncate any over-long values in their own displays: it is recommended
+that such truncation occur at 240 characters for each tag except
+<code>&lt;description&gt;</code>, where up to 2400 characters should be permitted.
+Authors should be made aware of this likely truncation.</li>
+</ul>
+<h4 id="title">5.6.1. <code>&lt;title&gt;</code></h4>
+<p>The <code>&lt;title&gt;</code> tag is mandatory. If no title is known, the correct
+form is</p>
+<pre><code>&lt;title&gt;An Interactive Fiction&lt;/title&gt;
+</code></pre>
+<p>Guidelines:</p>
+<ul>
+<li>A design system should make determined efforts to get the author to
+provide a title.</li>
+<li><code>&lt;title&gt;</code> text should be given in normal title capitalisation for the
+work's language: for English, that would mean caps on the first word,
+and on each subsequent word other than prepositions ("at", "between",
+etc.), articles ("the", "a", "an") and connectives ("and", "of", etc.).</li>
+<li>If there is a subtitle, best form is to use a colon in between title
+and subtitle:</li>
+</ul>
+<pre class="Plain"><code>&lt;title&gt;Zork II: The Wizard of Frobozz&lt;/title&gt;
+</code></pre>
+<ul>
+<li>Interpreters and other tools which search or sort on this field
+should do so case-insensitively, and following normal natural language
+conventions for the language in question (which may be assumed to be
+English if there is no other indication). For English, that would mean
+disregarding any of the initial articles "The", "A", "An". Thus in an
+alphabetical listing by title, "A Change in the Weather" should appear
+under C.</li>
+</ul>
+<h4 id="author">5.6.2. <code>&lt;author&gt;</code></h4>
+<p>The <code>&lt;author&gt;</code> tag is mandatory. If no author is known, the correct
+form is</p>
+<pre><code>&lt;author&gt;Anonymous&lt;/author&gt;
+</code></pre>
+<p>Guidelines:</p>
+<ul>
+<li>A design system should make determined efforts to get the author to
+give their name, or else take some active step to declare themself
+anonymous.</li>
+<li>The <code>&lt;author&gt;</code> must be a name or names, and must not be a sentence or
+partial sentence describing the authorship (e.g. "by James Madison",
+"written by Geoffrey Chaucer", "a novelty by Jack Djill").</li>
+<li>The <code>&lt;author&gt;</code> tag can certainly contain pseudonyms, but should not be
+used for e.g. email addresses or IRC handles.</li>
+<li>Names should be capitalised as the author wishes, except that they
+should not be given entirely in upper case: for instance "Humphrey Sponge",
+"Donna de Vries", "Marmaduke X. ffrench". Initials should be followed
+by full stops, as shown. If there are multiple initials, these should
+be spaced: "T. F. Shuttlecock", not "T.F. Shuttlecock".</li>
+<li>The author of a commercially published work should be its actual
+author, not the name of the company. Thus the <code>&lt;author&gt;</code> of "Spellbreaker"
+is "P. David Lebling", not "Infocom".</li>
+<li>Where there are co-authors, a list can be given. Use "and", not an
+ampersand. Thus: "Emily Short and Andrew Plotkin". If there are three
+or more authors, the serial comma may be used or not, as the authors
+prefer; and their names can occur in whatever order they prefer.</li>
+<li>Interpreters and other tools which search or sort on this field
+should, again, do so case-insensitively.</li>
+</ul>
+<h4 id="language">5.6.3. <code>&lt;language&gt;</code></h4>
+<p>The <code>&lt;language&gt;</code> tag is optional, and records the language in which the
+work's text is written (or primarily written, if the work uses multiple
+languages). This information can help potential users identify works
+written in languages they know, and could also be used as a hint to
+text-to-speech converters or other natural language analysis tools.</p>
+<p>The value is required to be an ISO-639 two- or three-letter language
+code, optionally followed by a hyphen and an ISO-3166 country code.
+(For English, typical specifiers would be en-US, for US English, or
+en-GB, for British English.)</p>
+<p>Guidelines:</p>
+<ul>
+<li>Design systems may assume that the language is English, but should
+provide the author with the opportunity to change this if it isn't.</li>
+<li>Where the author has not specified any dialect, none should be
+given: thus the default should be "en", not "en-US" or "en-UK".</li>
+</ul>
+<h4 id="headline">5.6.4. <code>&lt;headline&gt;</code></h4>
+<p>The <code>&lt;headline&gt;</code> tag is optional. This is the quasi-subtitle traditionally
+used in games which follow the Infocom style: for instance,</p>
+<pre><code>&lt;headline&gt;An Interactive Mystery&lt;/headline&gt;
+</code></pre>
+<p>Guidelines:</p>
+<ul>
+<li>A suitable default value is "An Interactive Fiction".</li>
+<li>This value should be cased as for <code>&lt;title&gt;</code>.</li>
+</ul>
+<h4 id="firstpublished">5.6.5. <code>&lt;firstpublished&gt;</code></h4>
+<p>The <code>&lt;firstpublished&gt;</code> tag is optional. This is the date of first
+publication: it may well not be the year in which the most recent
+story file was compiled. (For example, <code>&lt;firstpublished&gt;</code> for Zork I
+might be 1980, though its final compiled release was in November 1987.)</p>
+<p>It is required to have either the form YYYY or YYYY-MM-DD, giving
+either a year or an exact day. (YYYY-MM is illegal, and the year must
+be given as four digits.)</p>
+<p>Guideline:</p>
+<ul>
+<li>Publication implies availability to the public, whether as a free
+download or for sale: availability to groups of beta testers does not
+count.</li>
+</ul>
+<h4 id="genre">5.6.6. <code>&lt;genre&gt;</code></h4>
+<p>The <code>&lt;genre&gt;</code> tag is optional. This is the author's choice of description
+of the genre of their work.</p>
+<p>Guidelines:</p>
+<ul>
+<li>This is always going to be a highly subjective tag, and one which
+no overarching consistency can reasonably be expected. The author
+is encouraged (though not required) to use one (only) of the following:</li>
+</ul>
+<pre class="Plain"><code>    Children's Fiction, Collegiate Fiction, Comedy, Erotica, Fairy Tale,
+    Fantasy, Fiction, Historical, Horror, Mystery, Non-Fiction, Other,
+    Religious Fiction, Romance, Science Fiction, Surreal, Western
+</code></pre>
+<ul>
+<li>These categories are loosely based on those currently used by
+bookshops, as amended by comparison with Baf's Guide.</li>
+<li>"Fiction" is intended for works whose essential purpose is literary,
+in a way which trumps any subject they happen to have: if Julian Barnes
+writes a mystery, for instance, a bookshop will shelve it with modern
+novels rather than in the detective stories section, whereas P. D.
+James's Adam Dalgliesh mysteries will end up filed with detective
+fiction even though she has appreciable claims to be an important
+novelist.</li>
+<li>"Comedy" is used rather than "humour"/"humor" to avoid the ambiguous
+spelling. This genre includes parodies.</li>
+<li>"Non-Fiction" would be used for a work of IF which is essentially a
+presentation, perhaps in a novel interactive format, of true
+information. A meticulous simulation of the Great Exhibition of 1851,
+for instance, might qualify.</li>
+<li>The distinction between "Surreal" and "Other" is that "Surreal" works
+contain at least some semblance of narrative, whereas "Other" is
+intended for works which "abuse" the format to present some entirely
+different sort of game - Tetris, say, or Minesweeper.</li>
+<li>A suitable default value is "Fiction", but there is no need to give
+this tag at all.</li>
+</ul>
+<h4 id="group">5.6.7. <code>&lt;group&gt;</code></h4>
+<p>The <code>&lt;group&gt;</code> tag is optional. This places a given work of IF as
+belonging to a given group of works.</p>
+<p>Guidelines:</p>
+<ul>
+<li>This is <em>not</em> the name of a series. If the work belongs to a series
+(whether numbered or not), that should be recorded in <code>&lt;series&gt;</code>.</li>
+<li>The <code>&lt;group&gt;</code> for every Infocom story file is "Infocom", and similarly
+for the other pre-1990 companies.</li>
+<li>This tag is primarily provided so that iTunes-like browsers can
+usefully subdivide collections. As such, it is likely to be edited
+on many people's collections: the end user might choose to set the
+<code>&lt;group&gt;</code> for a selection of files to "IF Competition 2002", or "Mystery
+House Art Exhibition", etc.</li>
+<li>It belongs in the <code>&lt;bibliographic&gt;</code> section partly so that the design
+house can be recorded for old commercial works (see above), and partly
+because the author (or design system) might as well offer at least a
+suggestion. Inform 7 sets this tag to "Inform".</li>
+</ul>
+<h4 id="description">5.6.8. <code>&lt;description&gt;</code></h4>
+<p>The <code>&lt;description&gt;</code> tag is optional, and should contain the author's
+outline of the work.</p>
+<p>Uniquely, this tag may contain paragraph breaks, which are written
+"<code>&lt;br/&gt;</code>". No other HTML-like tags are permitted: this is plain text.
+Multiple spaces, tabs, newlines, etc., are treated as single spaces
+(thus typing a skipped line does not achieve a paragraph break).</p>
+<p>Guidelines:</p>
+<ul>
+<li>The value here should be thought of as analogous to the back
+cover blurb on a book, which might be read by someone picking
+the book up in a casual way. Like a cover blurb, it should feel
+able to "sell the product" as well as merely to itemise it.</li>
+<li>Quite a good default is to use the initially-printed paragraph
+of the story, then a supplementary paragraph explaining better,
+or talking about the author.</li>
+</ul>
+<p>For instance:</p>
+<pre><code>&lt;description&gt;Sharp words between the superpowers. Tanks in
+East Berlin. And now, reports the BBC, rumors of a satellite
+blackout. It's enough to spoil your continental
+breakfast.&lt;br/&gt;But the world will have to wait. This is the
+last day of your $599 London Getaway Package, and you're
+determined to soak up as much of that authentic English
+ambience as you can. So you've left the tour bus behind,
+ditched the camera and escaped to Hyde Park for a
+contemplative stroll through the Kensington
+Gardens...&lt;br/&gt;Trinity, written by Brian Moriarty and
+first published by Infocom in 1986, is an intriguing fantasy
+rooted both in traditional adventure games and in historical
+research on the development of the atomic bomb. Dark,
+literary and sophisticated, Trinity is one of the most
+influential works of IF ever written.&lt;/description&gt;
+</code></pre>
+<h4 id="series-and-seriesnumber">5.6.9. <code>&lt;series&gt;</code> and <code>&lt;seriesnumber&gt;</code></h4>
+<p>Both of these tags are optional. However, if <code>&lt;seriesnumber&gt;</code> is given,
+then it is required that <code>&lt;series&gt;</code> is also given. (The reverse is not
+the case: an unnumbered series is permitted.) <code>&lt;series&gt;</code> holds the
+name of the series, and <code>&lt;seriesnumber&gt;</code> the position in the series,
+which must be a non-negative integer. (It must <em>not</em> be text such
+as "III" or "Fifth Part".)</p>
+<p>Guidelines:</p>
+<ul>
+<li>This should be used when the game is intentionally part of a
+trilogy, or other set of works intended to be played in conjunction
+with each other.</li>
+</ul>
+<p>For instance, the iFiction record for "Spellbreaker" might contain:</p>
+<pre><code>&lt;series&gt;The Enchanter Trilogy&lt;/series&gt;
+&lt;seriesnumber&gt;3&lt;/seriesnumber&gt;
+</code></pre>
+<h4 id="forgiveness">5.6.10. <code>&lt;forgiveness&gt;</code></h4>
+<p>The <code>&lt;forgiveness&gt;</code> tag is optional. The value is information (normally
+from the author) on how forgiving the story is, on the Zarfian scale.
+The value is required to be one of the following, and in this casing
+(i.e. initial letter the only one in upper case):</p>
+<pre><code>Merciful    - cannot get stuck 
+Polite      - can get stuck or die, but it's immediately obvious that
+            - you're stuck or dead 
+Tough       - can get stuck, but it's immediately obvious that you're
+            about to do something irrevocable 
+Nasty       - can get stuck, but when you do something irrevocable,
+            it's clear 
+Cruel       - can get stuck by doing something which isn't obviously
+            irrevocable (even after the act)
+</code></pre>
+<p>This scale is understood to be less clear-cut and less generally
+applicable than was believed when this Treaty was first written. It is left
+to the author to decide what value is appropriate, or whether any value
+is appropriate.</p>
+<h3 id="resources">5.7. Resources</h3>
+<p>The <code>&lt;resources&gt;</code> tag is optional. This section, if present, details
+the other files (if any) which are intended to accompany the story
+file, and to be available to any player. By "other" is meant files
+which are not embedded in the story file. (So, for instance, pictures
+in a blorbed Z-machine story file do not count as "other".)</p>
+<p>It contains one or more <code>&lt;auxiliary&gt;</code> blocks. For instance:</p>
+<pre><code>&lt;resources&gt;
+    &lt;auxiliary&gt;
+        &lt;leafname&gt;Bronze Manual.pdf&lt;/leafname&gt;
+        &lt;description&gt;Manual&lt;/description&gt;
+    &lt;/auxiliary&gt;
+&lt;/resources&gt;
+</code></pre>
+<h4 id="auxiliary">5.7.1. <code>&lt;auxiliary&gt;</code></h4>
+<p>This tag records the details of a single external resource. It
+contains two compulsory tags:</p>
+<p>The <code>&lt;leafname&gt;</code> is the filename, with any directory path removed.
+By convention all resources should be filenamed with standard
+file extensions, as might be used on Windows or Mac OS X. The
+leafname should not include full stops (except for the extension),
+slashes of either persuasion \ or /, or colons.</p>
+<p>If the leafname has no extension, then it is the name of a folder.
+This must contain a small web-site, with only internal links,
+and whose home page is "index.html" inside the folder.</p>
+<p>The <code>&lt;description&gt;</code> is a brief textual description of what the
+resource is, such as might be used in a menu of downloads.</p>
+<h3 id="contacts">5.8. Contacts</h3>
+<p>The <code>&lt;contacts&gt;</code> tag is optional.</p>
+<p>If present, it can give one or both of a home page and an author's
+contact email address. These should only be given where it seems
+likely that they will be valid for an indefinite period of time.</p>
+<pre><code>&lt;contacts&gt;
+    &lt;url&gt;http://www.inform-fiction.org/&lt;/url&gt;
+    &lt;authoremail&gt;graham@gnelson.demon.co.uk&lt;/authoremail&gt;
+&lt;/contacts&gt;
+</code></pre>
+<h4 id="url">5.8.1. <code>&lt;url&gt;</code></h4>
+<p>The <code>&lt;url&gt;</code> tag is optional. It must be a valid, absolute URL, and
+the protocol must be "http://".</p>
+<h4 id="authoremail">5.8.2. <code>&lt;authoremail&gt;</code></h4>
+<p>The <code>&lt;authoremail&gt;</code> tag is optional.</p>
+<p>Email addresses should be given "raw", without explanation of their
+owners: so, "Graham Nelson <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#103;&#114;&#97;&#104;&#97;&#109;&#64;&#103;&#110;&#101;&#108;&#115;&#111;&#110;&#46;&#100;&#101;&#109;&#111;&#110;&#46;&#99;&#111;&#46;&#117;&#107;">&#103;&#114;&#97;&#104;&#97;&#109;&#64;&#103;&#110;&#101;&#108;&#115;&#111;&#110;&#46;&#100;&#101;&#109;&#111;&#110;&#46;&#99;&#111;&#46;&#117;&#107;</a>" is not
+legal (and would cause trouble because of needing to escape the angle
+brackets).</p>
+<p>Multiple authors, or multiple email addresses, can be listed by
+separating the entries with commas.</p>
+<h3 id="cover-art">5.9. Cover art</h3>
+<p>The <code>&lt;cover&gt;</code> tag is optional, except that it is mandatory for an
+iFiction record embedded in a story file which contains a cover
+image; and the information must, of course, be correct.</p>
+<p>If given, this section contains the tags below. The <code>&lt;format&gt;</code>,
+<code>&lt;height&gt;</code>, and <code>&lt;width&gt;</code> tags are required. The <code>&lt;description&gt;</code> tag
+is optional but recommended.</p>
+<pre><code>&lt;cover&gt;
+    &lt;format&gt;jpg&lt;/format&gt;
+    &lt;height&gt;960&lt;/height&gt;
+    &lt;width&gt;960&lt;/width&gt;
+    &lt;description&gt;A man wearing an unusual hat.&lt;/description&gt;
+&lt;/cover&gt;
+</code></pre>
+<h4 id="format_1">5.9.1. <code>&lt;format&gt;</code></h4>
+<p>This is required to be either "jpg" or "png". No other casings,
+spellings or image formats are permitted.</p>
+<h4 id="height-and-width">5.9.2. <code>&lt;height&gt;</code> and <code>&lt;width&gt;</code></h4>
+<p>In pixels: these are positive integers.</p>
+<h4 id="description_1">5.9.3. <code>&lt;description&gt;</code></h4>
+<p>This is a brief textual description of the image. An interpreter
+might display this as an alternative when graphical display is not
+available, or when supporting nonvisual users.
+(Tag added in revision 8.)</p>
+<h3 id="the-format-specific-tags">5.10. The format-specific tags</h3>
+<p>An iFiction record can, optionally, have one of the following:</p>
+<pre><code>&lt;zcode&gt;, &lt;glulx&gt;, &lt;tads2&gt;, &lt;tads3&gt;, &lt;hugo&gt;, &lt;alan&gt;, &lt;adrift&gt;,
+&lt;level9&gt;, &lt;agt&gt;, &lt;magscrolls&gt;, &lt;advsys&gt;, &lt;html&gt;,
+&lt;executable&gt;
+</code></pre>
+<p>It may only have the tag which matches the <code>&lt;format&gt;</code> value in the
+<code>&lt;identification&gt;</code> section.</p>
+<p>Each design system may specify whatever schema it likes for keys
+and values in its own section. The understanding is that tools not
+associated with that design system will probably not use this data.
+In other words, only TADS-based utilities or interpreters are likely
+ever to look at the contents of <code>&lt;tads3&gt;</code>, etc.</p>
+<p>The specification for any given format can be revised without the
+need to ask other parties: it "belongs" to the design system which
+generate the format. (Subject to not doing anything which would
+make iFiction files impracticable for others, such as including
+uuencoded binary data, or violating XML rules.)</p>
+<h4 id="zcode">5.10.1. <code>&lt;zcode&gt;</code></h4>
+<p>This section contains only optional tags.</p>
+<pre><code>&lt;zcode&gt;
+    &lt;version&gt;8&lt;/version&gt;
+    &lt;release&gt;7&lt;/release&gt;
+    &lt;serial&gt;930723&lt;/serial&gt;
+    &lt;checksum&gt;FF3D&lt;/checksum&gt;
+    &lt;compiler&gt;Inform 7 build 3G08&lt;/compiler&gt;
+    &lt;coverpicture&gt;1&lt;/coverpicture&gt;
+&lt;/zcode&gt;
+</code></pre>
+<p>The values of these tags are meaningful only when the iFiction record
+is embedded with the story file, not when the iFiction record exists
+externally, since they detail a specific compilation, not the project
+in general. The first four should match the header entries in the story
+file most recently compiled; the fifth is the most recent compiler
+used. Version is the Z-machine version.</p>
+<p>(Inform 7 generates <code>&lt;checksum&gt;</code> only when blorbing up an existing I6
+story file in new covers. In such cases, it generates the <code>&lt;compiler&gt;</code>
+by looking to see whether earlier Informs or Infocom's ZIL compiled
+the story file.)</p>
+<h5 id="coverpicture">5.10.1.1. <code>&lt;coverpicture&gt;</code></h5>
+<p><code>&lt;coverpicture&gt;</code> is used for a Blorbed z-code story file which contains
+cover art: it's the number of the picture which is used as the cover.</p>
+<h4 id="tads2-and-tads3">5.10.2. <code>&lt;tads2&gt;</code> and <code>&lt;tads3&gt;</code></h4>
+<p>TADS 2 and TADS 3 story files are entirely different in format, and
+for purposes of the Treaty are considered independent. However,
+their format-specific sections - <code>&lt;tads2&gt;</code> and <code>&lt;tads3&gt;</code> - have the
+same contents.</p>
+<p>This section contains only optional tags.</p>
+<pre><code>&lt;tads2&gt;
+    &lt;version&gt;7&lt;/version&gt;
+    &lt;releasedate&gt;1993-07-23&lt;/releasedate&gt;
+    &lt;presentationprofile&gt;Plain Text&lt;/presentationprofile&gt;
+    &lt;htmldescription&gt;This is a &lt;b&gt;terrific&lt;/b&gt; game.&lt;/htmldescription&gt;
+&lt;/tads2&gt;
+</code></pre>
+<h5 id="presentationprofile">5.10.2.1. <code>&lt;presentationprofile&gt;</code></h5>
+<p>The name of the recommended "presentation profile" for the game. This
+is a hint that gives the run-time interpreter an idea of the style of
+the game's user interface; interpreters can use this information to
+choose the most appropriate display settings, such as fonts and
+colors. Interpreters need not use this information at all; it's purely
+advisory. This value can be a user-defined profile name, or one of
+these pre-defined values:</p>
+<p>Plain Text indicates that the game is entirely text, with no graphics
+and with text formatting limited to "highlighted" text (i.e., the
+traditional TADS 2 highlighting, which is usually rendered as
+bold-face or equivalent). Multimedia indicates that the game makes use
+of HTML text formatting effects (such as fonts, text colors, text
+sizes, italics, and tables) and/or displays graphics. Default isn't a
+true profile, but rather explicitly selects the default profile. Some
+interpreters let the user choose a particular profile as the default,
+in which case this will select that profile. Authors can, if they
+wish, specify custom profile names of their own creation here, but
+authors doing so are advised that (1) interpreters will not generally
+be able to infer anything from profile names other than ones defined
+here, and (2) other standard profile names may be added here in the
+future, so custom names that authors choose could conceivably collide
+with future additions.</p>
+<p>The profile name isn't sensitive to case (that is, "multimedia" is
+treated as equivalent to "MULTIMEDIA"). However, we recommend that if
+you're using one of the pre-defined profile names listed above, you
+should use the exact capitalization as shown.</p>
+<p>In practical terms, the presentation profile is used by some
+interpreters to select a default set of visual settings to use when
+starting the game. For example, HTML TADS for Windows looks for a
+"theme" that has the same name as the presentation profile, and uses
+the matching theme, if any, when starting the game. An HTML TADS theme
+is simply a set of font, color, and other visual settings. Other
+interpreters, including all of the current text-only interpreters,
+completely ignore the presentation profile setting. Authors mustn't
+expect a presentation profile to select any particular color or font
+scheme or to have any other specific effects, because it's up to each
+interpreter to determine how to use the profile setting, if at all.</p>
+<p>Note that the presentation profile does not have any effect at all on
+the capabilities of the interpreter: the profile setting doesn't turn
+off any features an interpreter would otherwise offer, and it doesn't
+limit what kind of interpreter can be used to play the game. Selecting
+the "plain text" profile, for example, does not disable graphics or
+sound in an interpreter; it simply gives the interpreter guidance that
+the author feels the game will look best when displayed in a style
+(fonts, colors, etc.) suitable for traditional text-only games.
+Similarly, selecting the "multimedia" profile doesn't prevent the game
+from being played on text-only interpreters; it merely hints to
+interpreters that they should use a visual style suited for a more
+diverse mixture of text effects and/or graphics.</p>
+<h4 id="glulx">5.10.3. <code>&lt;glulx&gt;</code></h4>
+<p>This section contains only optional tags.</p>
+<pre><code>&lt;glulx&gt;
+    &lt;release&gt;7&lt;/release&gt;
+    &lt;serial&gt;930723&lt;/serial&gt;
+    &lt;checksum&gt;FF3DABC6&lt;/checksum&gt;
+    &lt;coverpicture&gt;1&lt;/coverpicture&gt;
+    &lt;presentationprofile&gt;Plain Text&lt;/presentationprofile&gt;
+    &lt;width&gt;640&lt;/width&gt;
+    &lt;height&gt;480&lt;/height&gt;
+&lt;/glulx&gt;
+</code></pre>
+<p>The purpose of these tags is to provide a portable replacement for the
+common practice of releasing a WinGlulx-specific configuration file to
+achieve the same effect.</p>
+<h5 id="coverpicture_1">5.10.3.1. <code>&lt;coverpicture&gt;</code></h5>
+<p>See <a href="#coverpicture">&#167;5.10.1.1, "&lt;coverpicture&gt;"</a>.</p>
+<h5 id="presentationprofile_1">5.10.3.2. <code>&lt;presentationprofile&gt;</code></h5>
+<p>See <a href="#presentationprofile">&#167;5.10.2.1, "&lt;presentationprofile&gt;"</a>.</p>
+<h5 id="width-height">5.10.3.3. <code>&lt;width&gt;</code>, <code>&lt;height&gt;</code></h5>
+<p>The suggested dimensions of the game's display. <code>&lt;width&gt;</code> and <code>&lt;height&gt;</code>
+are optional, but if one is defined, the other must be as well.
+Interpreters are free to disregard this entirely. It is suggested that
+interpreters constrain their display size to reflect the aspect ratio
+indicated by these values -- though they should not force the user to use
+these exact dimensions. These exact values may be used to set the initial
+size of the display if possible (though they should be scaled to not exceed
+the size of the user's screen).</p>
+<h4 id="hugo">5.10.4. <code>&lt;hugo&gt;</code></h4>
+<p>This section contains only optional tags, and is reserved for later
+definition by Kent Tessman on behalf of Hugo.</p>
+<h4 id="adrift">5.10.5. <code>&lt;adrift&gt;</code></h4>
+<p>This section contains only optional tags, and is reserved for later
+definition by Campbell Wild on behalf of ADRIFT.</p>
+<h3 id="releases">5.11. Releases</h3>
+<p>The <code>&lt;releases&gt;</code> section is optional. It is important to stress that the
+bulk of an iFiction record - and in particular its <code>&lt;identification&gt;</code> and
+<code>&lt;bibliographic&gt;</code> sections - document a work of IF throughout all the
+editions it has, not any individual release of that work.</p>
+<p>Information about specific releases may be placed in this section:</p>
+<pre><code>&lt;releases&gt;
+    &lt;attached&gt;
+        &lt;release&gt;
+        ...
+        &lt;/release&gt;
+    &lt;/attached&gt;
+    &lt;history&gt;
+        &lt;release&gt;
+        ...
+        &lt;/release&gt;
+        &lt;release&gt;
+        ...
+        &lt;/release&gt;
+        ...
+    &lt;/history&gt;
+&lt;/releases&gt;
+</code></pre>
+<h4 id="attached-and-history">5.11.1. <code>&lt;attached&gt;</code> and <code>&lt;history&gt;</code></h4>
+<p>The <code>&lt;attached&gt;</code> tag is optional. It may only exist in an iFiction record
+attached to a specific story file. So, for instance, a compiler of a
+story file is entitled to write about the <code>&lt;attached&gt;</code> release: but the
+IF-archive, when serving an iFiction record to the public based on an
+IFID alone, must not serve <code>&lt;attached&gt;</code> - it contains data which is not
+determined by the IFID.</p>
+<p><code>&lt;history&gt;</code> is optional, and can legally be served by the IF-archive.
+It consists of a release history for the work, and contains one or more
+<code>&lt;release&gt;</code> blocks, which must be all distinct from each other (i.e., no
+two <code>&lt;release&gt;</code> blocks in the <code>&lt;history&gt;</code> can contain identical data).
+<code>&lt;release&gt;</code> blocks may be placed in any order.</p>
+<p>It is not required that the release in the <code>&lt;attached&gt;</code> tag, if there is
+one, be included in the <code>&lt;history&gt;</code>.</p>
+<p>It is not required that any release in the <code>&lt;history&gt;</code> list should have
+the same date as the one given in <code>&lt;firstpublished&gt;</code>. In general, a
+<code>&lt;history&gt;</code> list is not obliged to be complete.</p>
+<h4 id="release">5.11.2. <code>&lt;release&gt;</code></h4>
+<p>A <code>&lt;release&gt;</code> should have the form:</p>
+<pre><code>&lt;release&gt;
+    &lt;version&gt;3&lt;/version&gt;
+    &lt;releasedate&gt;2005-11-30&lt;/releasedate&gt;
+    &lt;compiler&gt;Inform 7&lt;/compiler&gt;
+    &lt;compilerversion&gt;3D26&lt;/compilerversion&gt;
+&lt;/release&gt;
+</code></pre>
+<p>where <code>&lt;releasedate&gt;</code> is compulsory but the other two tags are optional.</p>
+<p><code>&lt;releasedate&gt;</code> has the same format as <code>&lt;firstpublished&gt;</code>: YYYY or
+YYYY-MM-DD.</p>
+<p><code>&lt;version&gt;</code> must be a non-negative integer.</p>
+<p><code>&lt;compiler&gt;</code> is the design system used to compile the story file. Only
+very major version numbers should be present, if at all (e.g. "TADS 3"
+or "Inform 6" but not "Inform 6.12").</p>
+<p><code>&lt;compilerversion&gt;</code> may only be present if <code>&lt;compiler&gt;</code> is present.
+Different compilers will have different notations for their versions.</p>
+<p>The release date can be the date of compilation of the released story
+file, if known, rather than the day on which commercial distribution
+began.</p>
+<h3 id="colophon">5.12. Colophon</h3>
+<p>The <code>&lt;colophon&gt;</code> tag is optional. It identifies the tool which wrote the
+.iFiction record, and also the date at which the data originates.
+Presented with multiple .iFiction records for the same story, a utility
+should use the colophon to determine which is the most recent.</p>
+<p>The colophon may be updated whenever a program or editor makes
+substantive changes to the .iFiction record. Operations which do not
+change the content of the .iFiction record (such as extraction from, or
+aggregation to, a multi-record file, or encapsulation within a wrapper
+or story file) should not change the colophon.</p>
+<p>Example:</p>
+<pre><code>&lt;colophon&gt;
+  &lt;generator&gt;Inform 7&lt;/generator&gt;
+  &lt;generatorversion&gt;3F47&lt;/generatorversion&gt;
+  &lt;originated&gt;2006-04-12&lt;/originated&gt;
+&lt;/colophon&gt;
+</code></pre>
+<h4 id="generator">5.12.1. <code>&lt;generator&gt;</code></h4>
+<p><code>&lt;generator&gt;</code> is mandatory within <code>&lt;colophon&gt;</code>.</p>
+<p>This is the name of the system which created this iFiction record. For
+iFiction files generated by hand, this should be the name of the person
+or organization responsible for generating the iFiction file.</p>
+<p>At this time, likely values for <code>&lt;generator&gt;</code> include:</p>
+<pre><code>Inform 7        - for metadata generated by the inform compiler
+Zoom            - for metadata generated by the Zoom interpreter
+Babel           - for metadata generated by babel*
+ifarchive.org   - for metadata compiled by the maintainers of the if-archive
+</code></pre>
+<p>* Though babel extracts iFiction files from various sources, it only
+generates a colophon when it is creating or modifying metadata, as in
+the case where it is synthesizing metadata from a story file which does
+not contain an iFiction record as such (e.g., when synthesising an
+iFiction record from the GameInfo structure inside a TADS story file).</p>
+<h4 id="generatorversion">5.12.2. <code>&lt;generatorversion&gt;</code></h4>
+<p><code>&lt;generatorversion&gt;</code> is optional within <code>&lt;colophon&gt;</code>.</p>
+<p><code>&lt;version&gt;</code> refers to the version of the generator used to produce the file.
+This can be used to isolate cases where an obsolete tool has been used to
+produce metadata. Story file compilers should follow the same conventions
+here as for <code>&lt;compiler&gt;</code> and <code>&lt;compilerversion&gt;</code> in a <code>&lt;release&gt;</code> tag (see
+above).</p>
+<p>Babel uses the revision of this treaty which it supports. Hand-written
+.iFiction files should not use <code>&lt;generatorversion&gt;</code>.</p>
+<h4 id="originated">5.12.3. <code>&lt;originated&gt;</code></h4>
+<p><code>&lt;originated&gt;</code> is mandatory within <code>&lt;colophon&gt;</code>.</p>
+<p>This is the best estimate of the date at which the bibliographic data
+in the iFiction record was last approved by the author of the work
+being described. This should be the date most useful in determining the
+freshness of the .iFiction data.</p>
+<p>If a design system is compiling a story file and including an iFiction
+record with it, then <code>&lt;originated&gt;</code> will normally be the compilation date.</p>
+<p>However, a third-party tool which synthesizes metadata from a story file
+should use either the compilation date (if it can be determined) of the
+story file, or else the compilation date of the tool itself. It should
+<em>not</em> use the date on which synthesis occurred, as this would result
+in obsolete metadata receiving current dates.</p>
+<p>Abstractly, the <code>&lt;originated&gt;</code> tag should contain the earliest date on
+which this metadata could have been created, not necessarily the date
+on which it actually was created.</p>
+<h3 id="annotation">5.13. Annotation</h3>
+<p>The <code>&lt;annotation&gt;</code> tag is optional. For an iFiction record embedded in
+a story file or otherwise produced by a design system, it is forbidden.
+It will not normally be present in any iFiction record served by
+the IF-archive.</p>
+<p>The purpose of the <code>&lt;annotation&gt;</code> section is to allow tools such as
+iTunes-like browsers to store user-specified or other convenient
+information, without violating the iFiction schema.</p>
+<p>Any such tool should use a subsection under its own name.</p>
+<h4 id="zoom">5.13.1. <code>&lt;zoom&gt;</code></h4>
+<p>Reserved for the use of Andrew Hunter's interpreter "Zoom". Its
+tags include:</p>
+<pre><code>&lt;comment&gt;
+    Any user comments on the story 
+&lt;rating&gt;
+    The user rating, a value between 0 and 10 where 0=worst and
+    10=best. 
+&lt;story&gt;
+    The URL of the story file 
+&lt;graphics&gt;
+    The URL of a file containing graphics for the story
+&lt;sounds&gt;
+    The URL of a file containing sounds for the story
+    (note that these are likely to be local file URLs, and may change
+    as Zoom reorganises its collection; any two or all three may
+    coincide, if a blorb is used)
+&lt;savegame tag="Description" date="savedate"&gt;
+    The URL of a saved game for the story. (There can be several
+    such tags.) The description text is shown to the player as one
+    of the restore options, and Zoom creates this by summarising the
+    status bar contents when the game is saved. The date specifies
+    when the game was saved.
+</code></pre>
+<h3 id="examples">5.14. Examples</h3>
+<h4 id="trinity">5.14.1. "Trinity"</h4>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ifindex version="1.0" xmlns="http://babel.ifarchive.org/protocol/iFiction/"&gt;
+    &lt;!-- Bibliographic data contributed by Graham Nelson --&gt;
+    &lt;story&gt;
+        &lt;identification&gt;
+            &lt;ifid&gt;ZCODE-12-860926&lt;/ifid&gt;
+            &lt;ifid&gt;ZCODE-11-860509&lt;/ifid&gt;
+            &lt;format&gt;zcode&lt;/format&gt;
+        &lt;/identification&gt;   
+        &lt;bibliographic&gt;
+            &lt;title&gt;Trinity&lt;/title&gt;
+            &lt;author&gt;Brian Moriarty&lt;/author&gt;
+            &lt;language&gt;en-US&lt;/language&gt;
+            &lt;headline&gt;An Interactive Fantasy&lt;/headline&gt;
+            &lt;firstpublished&gt;1986&lt;/firstpublished&gt;
+            &lt;genre&gt;Fantasy&lt;/genre&gt;
+            &lt;group&gt;Infocom&lt;/group&gt;
+            &lt;description&gt;"The time is out of joint; O curse spite,
+            That ever I was born to set it right!" - Hamlet I.v.
+            &lt;br/&gt;
+            It's the last day of your $599 London vacation. Unfortunately,
+            it's also the first day of World War III. Only seconds remain
+            before an H-bomb vaporizes the city... and you with it.
+            &lt;br/&gt;
+            Unless you escape to another time, another dimension.
+            &lt;br/&gt;
+            For every atomic explosion unlocks the door to a secret
+            universe; a plane between fantasy and reality, filled with
+            curious artifacts and governed by its own mischievous logic.
+            You'll crisscross time and space as you explore this
+            fascinating universe, learning to control its inexorable power.
+            &lt;br/&gt;
+            Trinity leads you on a journey back to the dawn of the atomic
+            age... and puts the course of history in your hands.&lt;/description&gt;
+        &lt;/bibliographic&gt;
+        &lt;cover&gt;
+            &lt;format&gt;jpg&lt;/format&gt;
+            &lt;height&gt;120&lt;/height&gt;
+            &lt;width&gt;120&lt;/width&gt;
+            &lt;description&gt;A sundial resting on sand, with an atomic mushroom
+            cloud in the background.&lt;/description&gt;
+        &lt;/cover&gt;
+        &lt;contacts&gt;
+            &lt;url&gt;http://en.wikipedia.org/wiki/Infocom&lt;/url&gt;
+        &lt;/contacts&gt;
+        &lt;releases&gt;
+            &lt;history&gt;
+                &lt;release&gt;
+                    &lt;version&gt;12&lt;/version&gt;
+                    &lt;releasedate&gt;1986-09-26&lt;/releasedate&gt;
+                    &lt;compiler&gt;ZILCH&lt;/compiler&gt;
+                    &lt;compilerversion&gt;4&lt;/compilerversion&gt;
+                &lt;/release&gt;
+                &lt;release&gt;
+                    &lt;version&gt;11&lt;/version&gt;
+                    &lt;releasedate&gt;1986-05-09&lt;/releasedate&gt;
+                    &lt;compiler&gt;ZILCH&lt;/compiler&gt;
+                    &lt;compilerversion&gt;4&lt;/compilerversion&gt;
+                &lt;/release&gt;
+            &lt;/history&gt;
+        &lt;/releases&gt;
+    &lt;/story&gt;
+&lt;/ifindex&gt;
+</code></pre>
+<h4 id="bronze">5.14.2. "Bronze"</h4>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ifindex version="1.0" xmlns="http://babel.ifarchive.org/protocol/iFiction/"&gt;
+    &lt;story&gt;
+        &lt;identification&gt;
+            &lt;ifid&gt;1810847C-0DC7-44D5-94EF-313A3E7AF257&lt;/ifid&gt;
+            &lt;format&gt;zcode&lt;/format&gt;
+        &lt;/identification&gt;   
+        &lt;bibliographic&gt;
+            &lt;title&gt;Bronze&lt;/title&gt;
+            &lt;headline&gt;A fractured fairy tale&lt;/headline&gt;
+            &lt;language&gt;en-US&lt;/language&gt;
+            &lt;author&gt;Emily Short&lt;/author&gt;
+            &lt;genre&gt;Fairy Tale&lt;/genre&gt;
+            &lt;description&gt;When the seventh day comes and it is time for you
+            to return to the castle in the forest, your sisters cling to your
+            sleeves.&lt;br/&gt;'Don't go back,' they say, and 'When will we ever see
+            you again?' But you imagine they will find consolation
+            somewhere.&lt;br/&gt;Your father hangs back, silent and moody. He has
+            spent the week as far from you as possible, working until late at
+            night. Now he speaks only to ask whether the Beast treated you
+            'properly.' Since he obviously has his own ideas about what must
+            have taken place over the past few years, you do not reply beyond
+            a shrug.&lt;br/&gt;You breathe more easily once you're back in the
+            forest, alone.&lt;br/&gt;Bronze is a puzzle-oriented adaptation of
+            Beauty and the Beast with an expansive geography for the inveterate
+            explorer.&lt;br/&gt;Features help for novice players, a detailed adaptive
+            hint system to assist players who get lost, and a number of
+            features to make navigating a large space more pleasant.&lt;/description&gt;
+            &lt;firstpublished&gt;2006&lt;/firstpublished&gt;
+            &lt;group&gt;Inform&lt;/group&gt;
+        &lt;/bibliographic&gt;
+        &lt;resources&gt;
+            &lt;auxiliary&gt;
+                &lt;leafname&gt;Bronze Manual.pdf&lt;/leafname&gt;
+                &lt;description&gt;Manual&lt;/description&gt;
+            &lt;/auxiliary&gt;
+            &lt;auxiliary&gt;
+                &lt;leafname&gt;map.pdf&lt;/leafname&gt;
+                &lt;description&gt;Complete (Spoilerful) Map&lt;/description&gt;
+            &lt;/auxiliary&gt;
+            &lt;auxiliary&gt;
+                &lt;leafname&gt;solution.txt&lt;/leafname&gt;
+                &lt;description&gt;Walkthrough&lt;/description&gt;
+            &lt;/auxiliary&gt;
+        &lt;/resources&gt;
+        &lt;cover&gt;
+            &lt;format&gt;jpg&lt;/format&gt;
+            &lt;height&gt;960&lt;/height&gt;
+            &lt;width&gt;960&lt;/width&gt;
+            &lt;description&gt;An antique Chinese bronze bell.&lt;/description&gt;
+        &lt;/cover&gt;
+        &lt;zcode&gt;
+            &lt;serial&gt;060329&lt;/serial&gt;
+            &lt;release&gt;1&lt;/release&gt;
+            &lt;compiler&gt;Inform 7 build 3G08&lt;/compiler&gt;
+            &lt;coverpicture&gt;1&lt;/coverpicture&gt;
+        &lt;/zcode&gt;
+        &lt;colophon&gt;
+            &lt;generator&gt;Inform 7&lt;/generator&gt;
+            &lt;generatorversion&gt;3G08&lt;/generatorversion&gt;
+            &lt;originated&gt;2006-03-29&lt;/originated&gt;
+        &lt;/colophon&gt;
+    &lt;/story&gt;
+&lt;/ifindex&gt;
+</code></pre>
+<h4 id="ditch-day-drifter">5.14.3. "Ditch Day Drifter"</h4>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ifindex version="1.0" xmlns="http://babel.ifarchive.org/protocol/iFiction/"&gt;
+    &lt;!-- Bibliographic data from www.tads.org/howto/gameinfo.htm --&gt;
+    &lt;story&gt;
+        &lt;identification&gt;
+            &lt;ifid&gt;TADS-C15B8633FF25B25DB1E61DE870D19D68&lt;/ifid&gt;
+            &lt;format&gt;tads2&lt;/format&gt;
+        &lt;/identification&gt;   
+        &lt;bibliographic&gt;
+            &lt;title&gt;Ditch Day Drifter&lt;/title&gt;
+            &lt;author&gt;Michael J. Roberts&lt;/author&gt;
+            &lt;language&gt;en-US&lt;/language&gt;
+            &lt;headline&gt;An Interactive Fiction&lt;/headline&gt;
+            &lt;firstpublished&gt;1990-08-10&lt;/firstpublished&gt;
+            &lt;genre&gt;Collegiate Fiction&lt;/genre&gt;
+            &lt;group&gt;TADS&lt;/group&gt;
+            &lt;description&gt;You're an undergraduate at Caltech, where you
+            wake up to find it's Ditch Day, the day when the seniors ditch
+            classes and leave "stacks" for the underclassmen to
+            solve.&lt;br/&gt;The original TADS sample game.&lt;/description&gt;
+        &lt;/bibliographic&gt;
+        &lt;tads2&gt;
+            &lt;version&gt;1.0&lt;/version&gt;
+            &lt;releasedate&gt;1990-08-10&lt;/releasedate&gt;
+            &lt;htmldescription&gt;You're an undergraduate at Caltech, where you
+            wake up to find it's Ditch Day, the day when the seniors ditch
+            classes and leave &amp;ldquo;stacks&amp;rdquo; for the underclassmen
+            to solve.&lt;p&gt;&lt;i&gt;The original TADS sample game.&lt;/i&gt;&lt;/htmldescription&gt;
+            &lt;presentationprofile&gt;Default&lt;/presentationprofile&gt;
+        &lt;/tads2&gt;
+    &lt;/story&gt;
+&lt;/ifindex&gt;
+</code></pre>
+<h4 id="dungeon-adventure">5.14.4. "Dungeon Adventure"</h4>
+<p>Level 9 games are an interesting test case, since although Level 9 did
+have a reasonably well-defined virtual machine, its story files were
+only ever circulated embedded in interpreters: a tool by Paul David
+Doherty cuts out the story file, but does fairly horrible things to
+achieve this. There is no good identification procedure to tell whether
+an arbitrary file is a Level 9 story file: and the IFID below is another
+case where we have to resort to an MD5 checksum.</p>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ifindex version="1.0" xmlns="http://babel.ifarchive.org/protocol/iFiction/"&gt;
+    &lt;!-- Bibliographic data contributed by Graham Nelson --&gt;
+    &lt;story&gt;
+        &lt;identification&gt;
+            &lt;ifid&gt;4C1C055EF01B5930744287EF5A0DCB14&lt;/ifid&gt;
+            &lt;format&gt;level9&lt;/format&gt;
+        &lt;/identification&gt;   
+        &lt;bibliographic&gt;
+            &lt;title&gt;Dungeon Adventure&lt;/title&gt;
+            &lt;author&gt;Pete Austin, Mike Austin and Nick Austin&lt;/author&gt;
+            &lt;language&gt;en-UK&lt;/language&gt;
+            &lt;firstpublished&gt;1984&lt;/firstpublished&gt;
+            &lt;genre&gt;Fantasy&lt;/genre&gt;
+            &lt;group&gt;Level 9&lt;/group&gt;
+            &lt;series&gt;Middle Earth Trilogy&lt;/series&gt;
+            &lt;seriesnumber&gt;3&lt;/seriesnumber&gt;
+            &lt;description&gt;Complete our Middle Earth Trilogy. The Demon has
+            been defeated and his Dark Tower cast down. But its dangerous
+            chambers remain, filled with hoarded treasure and magic. There
+            are just two snags. Other creatures want the loot, as well, and
+            many guardians remain: skeletons, carnivorous jellies, black
+            balls etc. Even an orc or two. Success will not come
+            easily!&lt;/description&gt;
+        &lt;/bibliographic&gt;
+        &lt;contacts&gt;
+            &lt;url&gt;http://www.if-legends.org/~l9memorial/html/home.html&lt;/url&gt;
+        &lt;/contacts&gt;
+    &lt;/story&gt;
+&lt;/ifindex&gt;
+</code></pre>
+<h3 id="the-sparse-ifiction-format">5.15. The sparse iFiction format</h3>
+<p>For legacy story files and for story files generated by a system which
+does not provide iFiction support, it may be necessary to write
+.iFiction data by hand. It would be tedious and error-prone to insert
+IFIDs by hand, but the Babel software is able to fill in missing
+IFIDs. An iFiction record which is missing its identification is
+called "sparse".</p>
+<p>Formally, a "sparse" .iFiction record conforms to the same
+specification as a normal .iFiction file, except that the
+<code>&lt;identification&gt;</code> section is optional.</p>
+<p>Babel provides a facility to "complete" a sparse .iFiction file,
+turning it into a complete .iFiction file by analyzing a story file.</p>
+<p>This process has the following caveats:</p>
+<ul>
+<li>If no <code>&lt;identification&gt;</code> section is found in the sparse .iFiction, a
+  new one will be added</li>
+<li>If an <code>&lt;identification&gt;</code> section is found, the <code>&lt;format&gt;</code> tag must match
+  the format of the provided story file</li>
+<li>If the <code>&lt;ifid&gt;</code> of the provided story file is not found, it will be
+  added.</li>
+</ul>
+<p>(An <code>&lt;identification&gt;</code> section is allowed in sparse .iFiction to deal with
+legacy projects which have more than one IFID.)</p>
+<h2 data-tocname="A" id="appendix-babel-a-users-guide">A. Appendix: Babel: a user's guide</h2>
+<p>The specification below is <em>not</em> formally part of the treaty, and exact
+syntaxes may change, but it seems worth documenting the tool here,
+particularly since it will likely be used by all of the parties to the
+treaty.</p>
+<h3 id="using-babel-on-the-command-line">A.1. Using babel on the command line</h3>
+<p>In the specification below, <code>&lt;storyfilename&gt;</code> must not be a zip
+archive (i.e. end in ".zip" with some casing), or a .iFiction file:
+babel should halt with an error if so.</p>
+<p>Conversely, <code>&lt;ifictionfilename&gt;</code> must be a ".iFiction" file.</p>
+<pre class="DefFun"><code>babel -ifid &lt;storyfilename&gt;
+</code></pre>
+<p>Examines the named story file and prints output as follows:</p>
+<pre><code>IFID: 1974A053-7DB0-4103-93A1-767C1382C0B7
+</code></pre>
+<p>Note that babel must determine the IFID using the algorithm in 2.2
+above - in particular, falling back on MD5 if all else fails. It is
+therefore not possible for this usage to fail to print a IFID (so
+long as the file is not a zip archive, no file-system accidents
+occur, etc.). If more than one IFID is recorded, because the story
+file contains metadata which lists more than one IFID, a list is
+printed:</p>
+<pre><code>IFID: 731F0480-5CB5-4340-B65B-384FC6B1F5B4
+IFID: ZCODE-8-040205-6630
+</code></pre>
+<pre class="DefFun"><code>babel -identify &lt;storyfilename&gt;
+</code></pre>
+<p>Prints out a brief summary of the story file, in the following form:</p>
+<pre><code>"When in Rome", by Emily Short
+IFID: XXXXXXXXXXXXXXXXXXXX
+blorbed zcode, 517K, cover 960x960 jpeg
+
+No bibliographic data
+IFID: XXXXXXXXXXXXXXXXXXXX
+zcode, 180K, no cover
+</code></pre>
+<p>Printing is done in a Terminal-safe way: the text of the title and
+author's name might be any Unicode characters, but all characters
+outside the Unicode range 0x20 to 0x7E will be flattened to underscores.</p>
+<pre class="DefFun"><code>babel -ifid &lt;ifictionfilename&gt;
+</code></pre>
+<p>Similar, but outputs the IFIDs recorded in <code>&lt;ifid&gt;</code> tags in the iFiction
+file supplied: there must be at least one in each of the <code>&lt;story&gt;</code>
+sections in that file. (It is legal for an iFiction file which is
+separate from a story file to record data on more than one story:
+this usage of babel should list every IFID from every story.)</p>
+<pre class="DefFun"><code>babel -format &lt;storyfilename&gt;
+</code></pre>
+<p>Examines the named story file and prints output as in the following
+examples:</p>
+<pre><code>Format: zcode
+Format: blorbed glulx
+Format: tads3
+Format: unknown
+</code></pre>
+<p>This should be determined using the recognition algorithm determined
+below. The format name will be one of those used in the iFiction
+<code>&lt;format&gt;</code> tag, or "unknown" if there is no indication what it is.
+The prefix "blorbed" indicates that the story file is embedded in a
+blorb archive. (The combination "blorbed unknown" is impossible, since
+the blorb format explicitly requires a statement of the story file's
+format.)</p>
+<pre class="DefFun"><code>babel -ifiction &lt;storyfilename&gt; [-to &lt;directory&gt;]
+</code></pre>
+<p>Extracts a .iFiction file to a file named XXXXX.iFiction, where XXXXX
+is the primary (first-listed) IFID; to the current working directory
+by default, and otherwise to the given "-to" directory.</p>
+<p>If successful, babel prints:</p>
+<pre><code>Extracted XXXXX.iFiction
+</code></pre>
+<p>(or whatever leafname it has). If there is no iFiction record, babel
+prints</p>
+<pre><code>No iFiction record for XXXXX
+</code></pre>
+<p>This is printed to stdout, not stderr: it isn't an error.</p>
+<pre class="DefFun"><code>babel -cover &lt;storyfilename&gt; [-to &lt;directory&gt;]
+</code></pre>
+<p>Identical to babel -ifiction, but for the cover art, which should have
+the filename XXXXX.jpg or XXXXX.png. On success, prints</p>
+<pre><code>Extracted XXXXX.jpg (960x960)
+</code></pre>
+<p>(or .png, as appropriate); the dimensions given are width x height. On
+failure,</p>
+<pre><code>No cover art for XXXXX
+</code></pre>
+<pre class="DefFun"><code>babel -verify &lt;ifictionfilename&gt;
+</code></pre>
+<p>Verifies the .iFiction file for adherence to this standard, to the best
+of babel's abilities. If the file is apparently correct, prints</p>
+<pre><code>Verified &lt;first-IFID-in-file&gt;
+</code></pre>
+<p>If not, prints suitable errors to stderr.</p>
+<pre class="DefFun"><code>babel -fish &lt;storyfilename&gt; [-to &lt;directory&gt;]
+</code></pre>
+<p>A sort of super-extractor, this fishes out both the cover art and the
+iFiction record - where present - printing output as in -ifiction and
+-cover above. <em>However</em>, in the event that the story file records
+multiple IFIDs, copies are created for each IFID present, not simply
+for the first. Thus, for instance:</p>
+<pre><code>$ babel -fish Savoir.zblorb
+Extracted 731F0480-5CB5-4340-B65B-384FC6B1F5B4.iFiction
+Extracted ZCODE-8-040205-6630.iFiction
+Extracted 731F0480-5CB5-4340-B65B-384FC6B1F5B4.jpg (960x960)
+Extracted ZCODE-8-040205-6630.jpg (960x960)
+$
+</code></pre>
+<pre class="DefFun"><code>babel -fish &lt;ifictionfilename&gt; [-to &lt;directory&gt;]
+</code></pre>
+<p>Each individual <code>&lt;story&gt;</code> record in the iFiction file is written out,
+as an iFiction file in its own right, and named in the usual
+XXXXX.iFiction way. Moreover, if a <code>&lt;story&gt;</code> records more than one
+IFID, a copy is made for each of these IFIDs.</p>
+<p>(Thus, for instance, a single iFiction file containing data on all
+of the Level 9 games could be expanded into individual records
+suitable for use by the IF-archive.)</p>
+<pre class="DefFun"><code>babel -lint &lt;ifictionfile&gt;
+</code></pre>
+<p>As "-verify", but also checks for compliance with the stylistic
+guidelines of this document.</p>
+<pre class="DefFun"><code>babel -complete &lt;storyfile&gt; &lt;ifictionfile&gt;
+</code></pre>
+<p>Completes the sparse ifictionfile using information from storyfile.
+Writes the output to XXXX.iFiction, where XXXX is the ifid of the story.</p>
+<pre class="DefFun"><code>babel -story &lt;storyfile&gt;
+</code></pre>
+<p>If the story file is inside a container format, extracts just the
+story file. If not, copies the input file.  In either case, it creates
+XXXX.EXT, where XXXX is the ifid of the file, and ext is the
+recommended extension for the story file.</p>
+<pre class="DefFun"><code>babel -unblorb &lt;storyfile&gt;
+</code></pre>
+<p>As "-fish", but also extracts the story file.</p>
+<pre class="DefFun"><code>babel -blorb &lt;storyfile&gt; &lt;ifictionfile&gt; [&lt;cover art&gt;]
+</code></pre>
+<p>Creates a blorb container consisting of the story file, ifiction file
+and, optionally, the cover art.  The resulting file is named XXXX.blorb
+where XXX is the ifid of the story file.  If the ifiction file is
+sparse, it will be completed first.</p>
+<h4 id="using-babel-in-a-pipe">A.1.1. Using babel in a pipe</h4>
+<p>As one of the intended uses of babel is as a back-end to other
+applications, it may be desirable to invoke the program as part of a
+pipeline.  The following features are available to facilitate this,
+though the exact syntax of their use may vary according to the
+conventions of the host platform.</p>
+<h5 id="piping-data-into-babel">A.1.1.1. Piping data into babel</h5>
+<p>With the exception of -blorb, any of the operations listed above as
+taking <code>&lt;ifictionfile&gt;</code> as input can use the filename "<code>-</code>" to read from
+standard input instead.  In UNIX-like syntax, the following two
+commands are equivalent:</p>
+<pre><code>babel -verify - &lt; ZCODE-67-000000.iFiction
+babel -verify ZCODE-67-000000.iFiction
+</code></pre>
+<p>This can be useful when coupled with a tool such as babel-get. For
+instance,</p>
+<pre><code>babel-get -ifiction ZCODE-67-000000 -url http://babel.ifarchive.org
+    | babel -verify -
+</code></pre>
+<p>will download and verify the .iFiction record for Sorcerer.</p>
+<h5 id="piping-data-out-of-babel">A.1.1.2. Piping data out of babel</h5>
+<pre><code>babel -meta &lt;storyfile&gt;
+</code></pre>
+<p>Extracts the iFiction record from the specified story file and prints it to
+standard output, so that it can be piped into a program which reads
+.iFiction. For example: </p>
+<pre><code>babel -meta lakeside.zblorb | babel -verify -
+</code></pre>
+<p>will verify the .iFiction data contained within lakeside.zblorb.</p>
+<h3 id="the-babel-handler-api">A.2. The Babel handler API</h3>
+<p>As a command-line utility, the babel tool performs basic analysis on
+both story files and iFiction records. The latter task is no more
+than routine XML parsing, but babel's functions to handle story files
+may be very helpful to tools such as interpreters and browsers, and
+it makes these functions available as the "babel handler", contained
+in the file babel_handler.c.</p>
+<p>The babel handler performs the following tasks:</p>
+<ol>
+<li>loads a story file from disk;</li>
+<li>determines the format of the story file and selects the correct treaty
+   functions for dealing with it;</li>
+<li>seamlessly handles integration of container formats.</li>
+</ol>
+<p>That is, once the babel handler has been initialized with a story file,
+it will forward treaty requests to the proper handler or to the container
+format's handler.</p>
+<p>This is the babel_handler API:</p>
+<pre class="DefFun"><code>void *get_babel_ctx(void);
+void release_babel_ctx(void *);
+</code></pre>
+<p>These functions create and destroy an opaque context object used by
+the babel handler. Each context object describes one currently loaded
+file. If you wish to process files in parallel (as a multithreaded
+application might), you should use a separate context object for each
+file (that is, each thread. On the other hand, if you want to have
+separate threads handle, say, the cover art and metadata on the <em>same</em>
+file, they should use the same context object).</p>
+<p>The object returned by <code>get_babel_ctx</code> is passed as the last parameter to
+each of the remaining functions:</p>
+<pre class="DefFun"><code>char *babel_init_ctx(char *filename, void *);
+</code></pre>
+<p>Initializes the babel handler with the given file.  This function must
+be called successfully before any other babel handler function can be
+called.  On a successful load, this returns the name of the format.
+If this fails, it will return NULL.  If it returns NULL, you must not
+use any of the other functions, except <code>babel_release_ctx</code>,
+<code>babel_md5_ifid_ctx</code> and <code>babel_get_length_ctx</code>.</p>
+<pre class="DefFun"><code>char *babel_init_raw_ctx(void *story_file, int32 extent, void *)
+</code></pre>
+<p>Does the same thing, but uses a story file which has already been loaded
+into memory. (Note that this will preclude the babel_handler's usual
+file extension checking.)</p>
+<pre class="DefFun"><code>int32 babel_treaty_ctx(int32 selector, void *output,
+                       int32 output_extent, void *);
+</code></pre>
+<p>Calls the proper treaty module for the given selector (the story file and
+story file extent are ommitted, as these are inferred from the babel handler
+context).  This function will correctly and invisibly handle container
+formats.</p>
+<pre class="DefFun"><code>void babel_release_ctx(void *);
+</code></pre>
+<p>This releases the resources held by the given babel handler context.  You
+must call this when you are done with the file loaded by <code>babel_init_ctx</code>, even
+if <code>babel_init_ctx</code> returned NULL.  Once this is called, the babel handler
+context must not be used until it is re-initialized.</p>
+<pre class="DefFun"><code>char *babel_get_format_ctx(void *);
+</code></pre>
+<p>This returns the format of the loaded file.  For story files not
+inside a container, this is identical to the value returned by the
+<code>GET_FORMAT_NAME_SEL</code> treaty selector.  For story files contained within
+a container format, the returned name is a composite, such as "blorbed zcode".</p>
+<pre class="DefFun"><code>int32 babel_md5_ifid_ctx(char *buffer, int extent, void *);
+</code></pre>
+<p>This generates an IFID for the loaded story file using the last-resort method
+of using an MD5 hash.  Note that if <code>GET_STORY_FILE_IFID_SEL</code> returns a positive
+number, this is not the actual IFID.  This function can be used even if
+<code>babel_init_ctx</code> returned NULL.  Returns nonzero so long as an MD5 can be
+generated (It will fail only if the file does not exist at all or
+the provided output buffer is less than 33 bytes long)</p>
+<pre class="DefFun"><code>int32 babel_get_length_ctx(void *);
+</code></pre>
+<p>This function returns the length of the loaded story file in bytes.</p>
+<pre class="DefFun"><code>int32 babel_get_story_length_ctx(void *);
+</code></pre>
+<p>As <code>babel_get_length_ctx</code>, but if the story file is in a container,
+returns just the length of the story itself.</p>
+<pre class="DefFun"><code>int32 babel_get_authoritative_ctx(void *)
+</code></pre>
+<p>Returns true if the loaded story file's format has been positively
+identified.</p>
+<pre class="DefFun"><code>void *babel_get_file_ctx(void *);
+</code></pre>
+<p>Returns a pointer to the actual loaded story file.</p>
+<pre class="DefFun"><code>void *babel_get_story_file_ctx(void *);
+</code></pre>
+<p>As <code>babel_get_file_ctx</code>, but, if the story file is inside a container,
+return just the story file, not the container.</p>
+<p>Applications which only need to deal with one story file at a time can use
+the non-parallelizable form of these functions:</p>
+<pre class="DefFun"><code>char *babel_init(char *filename);
+char *babel_init_raw(void *story_file, int32 extent);
+int32 babel_treaty(int32 selector, void *output, int32 output_extent);
+void babel_release(void);
+char *babel_get_format(void);
+int32 babel_md5_ifid(char *buffer, int32 extent);
+int32 babel_get_length(void);
+int32 babel_get_file(void);
+int32 babel_get_authoritative(void);
+</code></pre>
+<p>These do not take a context object, instead using a "default" context.</p>
+<p>babel_handler.c relies on the module registry, contained in register.c and
+modules.h.  modules.h contains macros which announce the known story and
+container formats.</p>
+<p>It also relies on misc.c for the <code>my_malloc</code> function.  You may provide your
+own replacement for <code>my_malloc</code> if you use some other allocator.</p>
+<h3 id="support-for-general-containers">A.3. Support for general containers</h3>
+<p>For the purposes of babel, a container format is treated similarly to a
+story file format.</p>
+<p>When contributing a new container format to babel, a container format
+should define the following function:</p>
+<pre class="DefFun"><code>int32 CONTAINER_treaty(void *container_file, int32 container_extent,
+                       void *output, int32 output_extent)
+</code></pre>
+<p>(<code>CONTAINER</code> should be replaced by the common name of the container format.)
+This function should perform the same functions as a <code>SYSTEM_treaty</code>
+function, except that it should accept three additional selectors:</p>
+<pre><code>                                    container_file  output
+CONTAINER_GET_STORY_FORMAT_SEL      not null        not null
+CONTAINER_GET_STORY_EXTENT_SEL      not null        null
+CONTAINER_GET_STORY_SEL             not null        not null
+</code></pre>
+<p><code>CONTAINER_GET_STORY_FORMAT_SEL</code> copies the treaty name of the format
+of the contained story file into the output buffer, returning &gt;0 if
+all went well. The value output by this selector should be the same
+as would be output by calling <code>GET_FORMAT_NAME_SEL</code> on the corresponding
+treaty module. (Though this is no guarantee that <code>CLAIM_STORY_FILE_SEL</code>
+will accept the story file: <code>CONTAINER_GET_STORY_FORMAT_SEL</code> is not
+expected to do any more than consult the container's formatting data.
+For example, an erroneous blorb file may claim to contain a zcode
+story file when it actually contains a glulx.)</p>
+<p><code>CONTAINER_GET_STORY_EXTENT_SEL</code> returns the size, in bytes, of the
+story file contained in the container.</p>
+<p><code>CONTAINER_GET_STORY_SEL</code> copies the story file from the container into
+the output buffer, returning the number of bytes copied if all went well.</p>
+<p>Because a container module is compatible with a story file treaty
+module, a simple tool may not need to distinguish between the two.
+However, any tool which needs to do sophisticated analysis should
+consult the <code>CONTAINER_treaty</code> function, then the <code>SYSTEM_treaty</code>
+function for the story file contained therein should the container
+not be able to ascertain the necesary information (especially for
+<code>GET_STORY_FILE_IFID_SEL</code>).</p>
+<p>(Note: <code>GET_FORMAT_NAME_SEL</code> on a container format should return the
+name of the container format. Depending on your desired usage, you may
+want to check one, the other, or both. For instance, the babel tool
+composes both in the form "CONTAINERed SYSTEM": e.g., "blorbed zcode".)</p>
+<h3 id="definitions-made-in-treatyh">A.4. Definitions made in treaty.h</h3>
+<p>treaty.h is a portable C header file which defines the various symbolic
+constants which should be used in treaty modules.</p>
+<p>Not everything in treaty.h is required by the Treaty of Babel; it also
+includes several definitions to simplify the lives of programmers.</p>
+<p>It defines these values:</p>
+<p>Return values for the <code>SYSTEM_treaty</code> function:</p>
+<pre><code>NO_REPLY_RV
+INVALID_STORY_FILE_RV
+UNAVAILABLE_RV
+INVALID_USAGE_RV
+VALID_STORY_FILE_RV
+INCOMPLETE_REPLY_RV
+</code></pre>
+<p>Cover art types:</p>
+<pre><code>PNG_COVER_FORMAT
+JPEG_COVER_FORMAT
+</code></pre>
+<p>SYSTEM_treaty selectors:</p>
+<pre><code>GET_HOME_PAGE_SEL
+GET_FORMAT_NAME_SEL
+GET_FILE_EXTENSIONS_SEL
+CLAIM_STORY_FILE_SEL
+GET_STORY_FILE_METADATA_EXTENT_SEL
+GET_STORY_FILE_COVER_EXTENT_SEL
+GET_STORY_FILE_COVER_FORMAT_SEL
+GET_STORY_FILE_IFID_SEL
+GET_STORY_FILE_METADATA_SEL
+GET_STORY_FILE_COVER_SEL
+</code></pre>
+<p>These bitmasks are provided to help group selectors by their requirements:</p>
+<pre><code>TREATY_SELECTOR_INPUT           if the selector requires a story file
+TREATY_SELECTOR_OUTPUT          if the selector requires an output buffer
+TREATY_SELECTOR_NUMBER          removes these flags from the selector
+</code></pre>
+<p>The treaty insists that programs supply output buffers at least this big:</p>
+<pre><code>TREATY_MINIMUM_EXTENT           currently 512 bytes
+</code></pre>
+<p>treaty.h also reserves three selectors for container formats:</p>
+<pre><code>CONTAINER_GET_STORY_FORMAT_SEL
+CONTAINER_GET_STORY_EXTENT_SEL
+CONTAINER_GET_STORY_FILE_SEL
+</code></pre>
+<p>and <code>TREATY_CONTAINER_SELECTOR</code>, which is a bitmask to detect these three
+selectors.</p>
+<p>treaty.h also declares two types:</p>
+<pre><code>TREATY          a pointer to a SYSTEM_treaty function
+int32           a 32-bit signed integer
+</code></pre>
+<h3 id="the-babel-ifiction-api">A.5. The Babel iFiction API</h3>
+<p>The Babel iFiction API is a simple XML parser geared toward the
+metadata format used by this treaty. It is no substitute for a proper
+XML parser, but will suffice for simple programs which don't wish to
+be encumbered by a heavy-weight XML library.</p>
+<p>The Babel iFiction API is made up from the files ifiction.c, and
+register_ifiction.c. It also uses the <code>my_malloc</code> function found in
+misc.c.</p>
+<p>The iFiction API consists of these methods:</p>
+<pre class="DefFun"><code>int32 ifiction_get_IFID(char *metadata, char *output, int32 output_extent);
+</code></pre>
+<p>Copies a comma separated list of the IFIDs found in the metadata into output.
+Returns the number of IFIDs found. Note that this may be 0 if the metadata
+is a sparse iFiction record: if the record is known not to be sparse, a
+return value of 0 indicates there is something wrong with the metadata.</p>
+<pre class="DefFun"><code>char *ifiction_get_tag(char *md, char *p, char *t, char *from);
+</code></pre>
+<p>Returns the content of tag t within container tag p
+(so ifiction_get_tag(md, "bibliographic", "title") would return the title of
+a work), or NULL if it is not found. 
+This function returns newly allocated heap memory, which must be freed
+by the calling context.
+To find the first matching tag in the file, pass the value NULL as the
+final parameter.  To find subsequent occurences, pass the value returned by
+the previous call.</p>
+<pre class="DefFun"><code>void ifiction_parse(char *md, IFCloseTag close_tag, void *close_ctx,
+                    IFErrorHandler error_handler, void *error_ctx);
+</code></pre>
+<p>Processes md.  <code>close_tag(tag,close_ctx)</code> is called as each tag is closed.
+<code>error_handler(char *, error_ctx)</code> is passed a string for any error encountered.
+You may print errors or ignore them, depending on your needs; processing will
+continue unless an error is very serious. (Note in particular that reading
+the "identification" section in a sparse iFiction record, which lacks such
+a section, will generate errors.)</p>
+<p>The error_handler argument to ifiction_parse has the following signature:</p>
+<pre><code>void (*IFErrorHandler)(char *error_text, void *error_context);
+</code></pre>
+<p>The close_tag argument has this syntax:</p>
+<pre><code>void (*IFCloseTag)(struct XMLTag *tag, void *context);
+</code></pre>
+<p>Where struct XMLTag is defined as:</p>
+<pre><code>struct XMLTag
+{
+ int32 beginl;                  /* Beginning line number */
+ char tag[256];                 /* name of the tag */
+ char fulltag[256];             /* Full text of the opening tag */
+ char *begin;                   /* Points to the beginning of the tag's content */
+ char *end;                     /* Points to the end of the tag's content.
+                                   setting *end=0 will turn begin into a string
+                                   containing the tag's content (But if you do this, you
+                                   should restore the original value of *end before
+                                   allowing control to return to the ifiction parser) */
+ char occurences[256];          /* reserved for internal use */
+ char rocurrences[256];
+ struct XMLTag *next;           /* The tag's parent */
+
+};
+</code></pre>
+<h3 id="the-babel-get-program">A.6. The babel-get program</h3>
+<p>babel-get is a utility to retrieve metadata for a story. It requires
+that "curl" (<a href="http://curl.haxx.se/">http://curl.haxx.se/</a>) be installed.</p>
+<p>Usage:</p>
+<pre class="DefFun"><code>babel-get -ifiction [&lt;IFID&gt;] -story &lt;storyfile&gt;
+</code></pre>
+<p>Prints the metadata for the given story.  No output if metadata is not found
+or if an IFID which does not match the story file is given.</p>
+<pre class="DefFun"><code>babel-get -ifiction [&lt;IFID&gt;] -ifiction &lt;ifictionfile&gt;
+</code></pre>
+<p>If an IFID is given, finds the corresponding ifiction record from the given
+file. If not, prints the first ifiction record in the given file.</p>
+<pre class="DefFun"><code>babel-get -ifiction &lt;IFID&gt; -dir &lt;ifiction directory&gt;
+</code></pre>
+<p>Scans all ifiction files in the given directory for the ifiction
+record of the corresponding IFID and prints it.</p>
+<pre class="DefFun"><code>babel-get -ifiction &lt;IFID&gt; -url &lt;url&gt;
+</code></pre>
+<p>Retrieves the ifiction record for the given IFID from the given server
+and prints it.</p>
+<pre class="DefFun"><code>babel-get -cover [&lt;IFID&gt;] -story &lt;storyfile&gt; [-to &lt;directory&gt;]
+</code></pre>
+<p>Creates <IFID>.jpg or <IFID>.png, containing the cover art for
+the specified file.</p>
+<pre class="DefFun"><code>babel-get -cover &lt;IFID&gt; -url &lt;url&gt; [-to &lt;directory&gt;]
+</code></pre>
+<p>Downloads <IFID>.jpg from the given server.</p>
+<p><code>&lt;url&gt;</code> should be an http://, ftp:// or file:// style URL.</p>
+</body>
+</html>
