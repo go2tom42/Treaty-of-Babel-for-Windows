@@ -1,5 +1,12 @@
 # **Treaty of Babel for Windows**  
 
+Links:  
+
+https://github.com/iftechfoundation/babel-tool  
+https://babel.ifarchive.org/program.html  
+
+------
+
 I had zero luck with the included makefile, these are the steps I used to compile  
 
 This does edit 3 source files:  
