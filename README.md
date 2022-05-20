@@ -174,5 +174,5 @@ These commands will download the source files, install needed compilers, compile
 `Set-MpPreference -DisableRealtimeMonitoring $false`  
 `Switch-WindowsDefender -Enable`  
 
-**Or just run this**  
+**Or just run this in a Powershell 5.1 TERMINAL as admin**  
 `Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/go2tom42/Treaty-of-Babel-for-Windows/main/Install-Script.ps1'))`
