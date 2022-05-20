@@ -131,7 +131,7 @@ These commands will download the source files, install needed compilers, compile
 
 `ar -r babel_functions.a babel_story_functions.o babel_ifiction_functions.o babel_multi_functions.o`  
 `gcc -o babel babel.o babel_functions.a ifiction.a babel.a babel_handler.a md5.a blorb.a misc.a register_ifiction.a register.a executable.a zcode.a glulx.a tads2.a tads3.a hugo.a alan.a adrift.a level9.a agt.a magscrolls.a advsys.a html.a tads.a`  
-`Set-Location -Path "c:\Users\$env:UserName\babel-0.6\extras"`
+`Set-Location -Path "c:\Users\$env:UserName\babel-0.6\extras"`  
 `(Get-Content hotload.c) -Replace 'int babel_hotload', 'int main' | Set-Content hotload.c`  
 
 `gcc -c babel-list.c`  
