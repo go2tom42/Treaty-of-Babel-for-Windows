@@ -30,6 +30,7 @@ These commands will download the source files, install needed compilers, compile
 # **Instructions start here**  
 
 **Start Powershell 5.1 TERMINAL as admin**  
+**Copy and paste the following**  
 
 `Set-MpPreference -DisableRealtimeMonitoring $true`  
 `Set-ExecutionPolicy Bypass -Scope Process -Force`  
@@ -172,3 +173,6 @@ These commands will download the source files, install needed compilers, compile
 `Compress-Archive -Path *.exe -DestinationPath "C:\Users\$env:UserName\Desktop\babel_suite_win32.zip" #Change if not using EVAL version`  
 `Set-MpPreference -DisableRealtimeMonitoring $false`  
 `Switch-WindowsDefender -Enable`  
+
+**Or just run this**  
+`Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/go2tom42/Treaty-of-Babel-for-Windows/main/Install-Script.ps1'))`
